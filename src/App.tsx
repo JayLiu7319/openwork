@@ -87,6 +87,7 @@ import {
   readOpencodeConfig,
   writeOpencodeConfig,
 } from "./lib/tauri";
+import { I18nProvider } from "./i18n";
 
 export default function App() {
   const [view, _setView] = createSignal<View>("onboarding");
@@ -311,7 +312,7 @@ export default function App() {
 
 
 
-  let markReloadRequiredRef: (reason: ReloadReason) => void = () => {};
+  let markReloadRequiredRef: (reason: ReloadReason) => void = () => { };
 
   const extensionsStore = createExtensionsStore({
     client,
@@ -382,7 +383,7 @@ export default function App() {
   const [showThinking, setShowThinking] = createSignal(false);
   const [modelVariant, setModelVariant] = createSignal<string | null>(null);
 
-  let loadWorkspaceTemplatesRef: (options?: { workspaceRoot?: string; quiet?: boolean }) => Promise<void> = async () => {};
+  let loadWorkspaceTemplatesRef: (options?: { workspaceRoot?: string; quiet?: boolean }) => Promise<void> = async () => { };
 
   const workspaceStore = createWorkspaceStore({
     mode,
@@ -1767,17 +1768,18 @@ export default function App() {
   });
 
   return (
-    <>
-      <Show
-        when={client()}
-        fallback={<OnboardingView {...onboardingProps()} />}
-      >
-        <Switch>
-          <Match when={view() === "dashboard"}>
-            <DashboardView {...dashboardProps()} />
-          </Match>
-          <Match when={view() === "session"}>
-            <SessionView
+    <I18nProvider>
+      <>
+        <Show
+          when={client()}
+          fallback={<OnboardingView {...onboardingProps()} />}
+        >
+          <Switch>
+            <Match when={view() === "dashboard"}>
+              <DashboardView {...dashboardProps()} />
+            </Match>
+            <Match when={view() === "session"}>
+              <SessionView
                 selectedSessionId={activeSessionId()}
                 setView={setView}
                 setTab={setTab}
@@ -1834,94 +1836,95 @@ export default function App() {
                   }
                 }}
                 sessionStatus={selectedSessionStatus()}
-              error={error()}
-            />
-          </Match>
-          <Match when={true}>
-            <DashboardView {...dashboardProps()} />
-          </Match>
-        </Switch>
-      </Show>
+                error={error()}
+              />
+            </Match>
+            <Match when={true}>
+              <DashboardView {...dashboardProps()} />
+            </Match>
+          </Switch>
+        </Show>
 
-      <ModelPickerModal
-        open={modelPickerOpen()}
-        options={modelOptions()}
-        filteredOptions={filteredModelOptions()}
-        query={modelPickerQuery()}
-        setQuery={setModelPickerQuery}
-        target={modelPickerTarget()}
-        current={modelPickerCurrent()}
-        onSelect={applyModelSelection}
-        onClose={() => setModelPickerOpen(false)}
-      />
+        <ModelPickerModal
+          open={modelPickerOpen()}
+          options={modelOptions()}
+          filteredOptions={filteredModelOptions()}
+          query={modelPickerQuery()}
+          setQuery={setModelPickerQuery}
+          target={modelPickerTarget()}
+          current={modelPickerCurrent()}
+          onSelect={applyModelSelection}
+          onClose={() => setModelPickerOpen(false)}
+        />
 
-      <ResetModal
-        open={resetModalOpen()}
-        mode={resetModalMode()}
-        text={resetModalText()}
-        busy={resetModalBusy()}
-        canReset={
-          !resetModalBusy() &&
-          !anyActiveRuns() &&
-          resetModalText().trim().toUpperCase() === "RESET"
-        }
-        hasActiveRuns={anyActiveRuns()}
-        onClose={() => setResetModalOpen(false)}
-        onConfirm={confirmReset}
-        onTextChange={setResetModalText}
-      />
+        <ResetModal
+          open={resetModalOpen()}
+          mode={resetModalMode()}
+          text={resetModalText()}
+          busy={resetModalBusy()}
+          canReset={
+            !resetModalBusy() &&
+            !anyActiveRuns() &&
+            resetModalText().trim().toUpperCase() === "RESET"
+          }
+          hasActiveRuns={anyActiveRuns()}
+          onClose={() => setResetModalOpen(false)}
+          onConfirm={confirmReset}
+          onTextChange={setResetModalText}
+        />
 
-      <McpAuthModal
-        open={mcpAuthModalOpen()}
-        client={client()}
-        entry={mcpAuthEntry()}
-        projectDir={workspaceProjectDir()}
-        onClose={() => {
-          setMcpAuthModalOpen(false);
-          setMcpAuthEntry(null);
-        }}
-        onComplete={() => {
-          setMcpAuthModalOpen(false);
-          setMcpAuthEntry(null);
-          markReloadRequired("mcp");
-          setMcpStatus("OAuth completed. Reload the engine to activate the MCP.");
-        }}
-        onReloadEngine={() => reloadEngineInstance()}
-      />
+        <McpAuthModal
+          open={mcpAuthModalOpen()}
+          client={client()}
+          entry={mcpAuthEntry()}
+          projectDir={workspaceProjectDir()}
+          onClose={() => {
+            setMcpAuthModalOpen(false);
+            setMcpAuthEntry(null);
+          }}
+          onComplete={() => {
+            setMcpAuthModalOpen(false);
+            setMcpAuthEntry(null);
+            markReloadRequired("mcp");
+            setMcpStatus("OAuth completed. Reload the engine to activate the MCP.");
+          }}
+          onReloadEngine={() => reloadEngineInstance()}
+        />
 
-      <TemplateModal
-        open={templateModalOpen()}
-        title={templateDraftTitle()}
-        description={templateDraftDescription()}
-        prompt={templateDraftPrompt()}
-        scope={templateDraftScope()}
-        onClose={() => setTemplateModalOpen(false)}
-        onSave={saveTemplate}
-        onTitleChange={setTemplateDraftTitle}
-        onDescriptionChange={setTemplateDraftDescription}
-        onPromptChange={setTemplateDraftPrompt}
-        onScopeChange={setTemplateDraftScope}
-      />
+        <TemplateModal
+          open={templateModalOpen()}
+          title={templateDraftTitle()}
+          description={templateDraftDescription()}
+          prompt={templateDraftPrompt()}
+          scope={templateDraftScope()}
+          onClose={() => setTemplateModalOpen(false)}
+          onSave={saveTemplate}
+          onTitleChange={setTemplateDraftTitle}
+          onDescriptionChange={setTemplateDraftDescription}
+          onPromptChange={setTemplateDraftPrompt}
+          onScopeChange={setTemplateDraftScope}
+        />
 
-      <WorkspacePicker
-        open={workspaceStore.workspacePickerOpen()}
-        workspaces={workspaceStore.filteredWorkspaces()}
-        activeWorkspaceId={workspaceStore.activeWorkspaceId()}
-        search={workspaceStore.workspaceSearch()}
-        onSearch={workspaceStore.setWorkspaceSearch}
-        onClose={() => workspaceStore.setWorkspacePickerOpen(false)}
-        onSelect={workspaceStore.activateWorkspace}
-        onCreateNew={() => workspaceStore.setCreateWorkspaceOpen(true)}
-      />
+        <WorkspacePicker
+          open={workspaceStore.workspacePickerOpen()}
+          workspaces={workspaceStore.filteredWorkspaces()}
+          activeWorkspaceId={workspaceStore.activeWorkspaceId()}
+          search={workspaceStore.workspaceSearch()}
+          onSearch={workspaceStore.setWorkspaceSearch}
+          onClose={() => workspaceStore.setWorkspacePickerOpen(false)}
+          onSelect={workspaceStore.activateWorkspace}
+          onCreateNew={() => workspaceStore.setCreateWorkspaceOpen(true)}
+        />
 
-      <CreateWorkspaceModal
-        open={workspaceStore.createWorkspaceOpen()}
-        onClose={() => workspaceStore.setCreateWorkspaceOpen(false)}
-        onPickFolder={workspaceStore.pickWorkspaceFolder}
-        onConfirm={(preset, folder) =>
-          workspaceStore.createWorkspaceFlow(preset, folder)
-        }
-      />
-    </>
+        <CreateWorkspaceModal
+          open={workspaceStore.createWorkspaceOpen()}
+          onClose={() => workspaceStore.setCreateWorkspaceOpen(false)}
+          onPickFolder={workspaceStore.pickWorkspaceFolder}
+          onConfirm={(preset, folder) =>
+            workspaceStore.createWorkspaceFlow(preset, folder)
+          }
+        />
+      </>
+    </I18nProvider>
   );
 }

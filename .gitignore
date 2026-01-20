@@ -22,3 +22,6 @@ vendor/opencode/
 .opencode/bun.lock
 
 .idea/
+
+# Agent workflows (local only)
+.agent/
