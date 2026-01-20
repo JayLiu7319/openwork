@@ -1,7 +1,7 @@
-import { For, Match, Show, Switch } from "solid-js";
+import { For, Match, Show, Switch, createSignal } from "solid-js";
 import type { Mode, OnboardingStep } from "../app/types";
 import type { WorkspaceInfo } from "../lib/tauri";
-import { ArrowLeftRight, CheckCircle2, Circle } from "lucide-solid";
+import { ArrowLeftRight, CheckCircle2, Circle, ChevronRight } from "lucide-solid";
 
 import Button from "../components/Button";
 import OnboardingWorkspaceSelector from "../components/OnboardingWorkspaceSelector";
@@ -56,6 +56,7 @@ export type OnboardingViewProps = {
 
 export default function OnboardingView(props: OnboardingViewProps) {
   const { t } = useI18n();
+  const [showAdvanced, setShowAdvanced] = createSignal(false);
 
   const engineDoctorAvailable = () =>
     props.engineDoctorFound === true && props.engineDoctorSupportsServe === true;
@@ -129,98 +130,6 @@ export default function OnboardingView(props: OnboardingViewProps) {
               onPickFolder={props.onPickWorkspaceFolder}
             />
 
-            <div class="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-4 space-y-3">
-              <div class="flex items-center justify-between gap-3">
-                <div class="text-sm font-medium text-white">{t('onboarding.engine.title')}</div>
-                <Button
-                  variant="outline"
-                  class="text-xs h-8 py-0 px-3"
-                  onClick={props.onRefreshEngineDoctor}
-                  disabled={props.busy}
-                >
-                  {t('common.buttons.refresh')}
-                </Button>
-              </div>
-              <div class="text-xs text-zinc-500">{engineStatusLabel()}</div>
-
-              <Show when={!engineDoctorAvailable()}>
-                <div class="text-xs text-zinc-500">
-                  {props.isWindows
-                    ? t('onboarding.engine.installWindows')
-                    : t('onboarding.engine.installHint')}
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <Button
-                    variant="secondary"
-                    onClick={props.onInstallEngine}
-                    disabled={props.busy || props.isWindows}
-                    title={props.isWindows ? t('onboarding.engine.windowsManual') : ""}
-                  >
-                    {t('onboarding.engine.installButton')}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={props.onRefreshEngineDoctor}
-                    disabled={props.busy}
-                  >
-                    {t('onboarding.engine.recheck')}
-                  </Button>
-                </div>
-              </Show>
-
-              <Show when={engineDoctorAvailable()}>
-                <div class="text-xs text-zinc-600">
-                  {t('onboarding.engine.readyToStart')}
-                </div>
-              </Show>
-
-              <Show
-                when={
-                  props.engineDoctorResolvedPath ||
-                  props.engineDoctorVersion ||
-                  props.engineDoctorNotes.length ||
-                  serveHelpOutput()
-                }
-              >
-                <div class="rounded-xl bg-black/20 border border-zinc-800 p-3 space-y-3 text-xs text-zinc-400">
-                  <Show when={props.engineDoctorResolvedPath}>
-                    <div>
-                      <div class="text-[11px] text-zinc-500">{t('onboarding.engine.resolvedPath')}</div>
-                      <div class="font-mono break-all">{props.engineDoctorResolvedPath}</div>
-                    </div>
-                  </Show>
-                  <Show when={props.engineDoctorVersion}>
-                    <div>
-                      <div class="text-[11px] text-zinc-500">{t('onboarding.engine.version')}</div>
-                      <div class="font-mono">{props.engineDoctorVersion}</div>
-                    </div>
-                  </Show>
-                  <Show when={props.engineDoctorNotes.length}>
-                    <div>
-                      <div class="text-[11px] text-zinc-500">{t('onboarding.engine.searchNotes')}</div>
-                      <pre class="whitespace-pre-wrap break-words text-xs text-zinc-400">
-                        {props.engineDoctorNotes.join("\n")}
-                      </pre>
-                    </div>
-                  </Show>
-                  <Show when={serveHelpOutput()}>
-                    <div>
-                      <div class="text-[11px] text-zinc-500">{t('onboarding.engine.serveHelp')}</div>
-                      <pre class="whitespace-pre-wrap break-words text-xs text-zinc-400">
-                        {serveHelpOutput()}
-                      </pre>
-                    </div>
-                  </Show>
-                </div>
-              </Show>
-
-              <Show when={props.engineInstallLogs}>
-                <div class="rounded-xl bg-black/20 border border-zinc-800 p-3 text-xs text-zinc-400 whitespace-pre-wrap max-h-40 overflow-auto font-mono">
-                  {props.engineInstallLogs}
-                </div>
-              </Show>
-            </div>
-
             <Button onClick={props.onStartHost} disabled={props.busy || !props.activeWorkspacePath.trim()} class="w-full py-3 text-base">
               {t('onboarding.workspace.startButton')}
             </Button>
@@ -228,6 +137,117 @@ export default function OnboardingView(props: OnboardingViewProps) {
             <Button variant="ghost" onClick={props.onBackToMode} disabled={props.busy} class="w-full">
               {t('common.buttons.back')}
             </Button>
+
+            <div class="pt-2">
+              <button
+                onClick={() => setShowAdvanced(!showAdvanced())}
+                class="flex items-center gap-2 text-xs text-zinc-500 hover:text-zinc-300 transition-colors group px-1"
+              >
+                <ChevronRight
+                  size={12}
+                  class="transition-transform duration-200"
+                  classList={{ "rotate-90": showAdvanced() }}
+                />
+                Advanced settings
+              </button>
+
+              <Show when={showAdvanced()}>
+                <div class="mt-3 space-y-3">
+                  <div class="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-4 space-y-3">
+                    <div class="flex items-center justify-between gap-3">
+                      <div class="text-sm font-medium text-white">{t('onboarding.engine.title')}</div>
+                      <Button
+                        variant="outline"
+                        class="text-xs h-8 py-0 px-3"
+                        onClick={props.onRefreshEngineDoctor}
+                        disabled={props.busy}
+                      >
+                        {t('common.buttons.refresh')}
+                      </Button>
+                    </div>
+                    <div class="text-xs text-zinc-500">{engineStatusLabel()}</div>
+
+                    <Show when={!engineDoctorAvailable()}>
+                      <div class="text-xs text-zinc-500">
+                        {props.isWindows
+                          ? t('onboarding.engine.installWindows')
+                          : t('onboarding.engine.installHint')}
+                      </div>
+                      <div class="flex flex-wrap gap-2">
+                        <Button
+                          variant="secondary"
+                          onClick={props.onInstallEngine}
+                          disabled={props.busy || props.isWindows}
+                          title={props.isWindows ? t('onboarding.engine.windowsManual') : ""}
+                        >
+                          {t('onboarding.engine.installButton')}
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={props.onRefreshEngineDoctor}
+                          disabled={props.busy}
+                        >
+                          {t('onboarding.engine.recheck')}
+                        </Button>
+                      </div>
+                    </Show>
+
+                    <Show when={engineDoctorAvailable()}>
+                      <div class="text-xs text-zinc-600">
+                        {t('onboarding.engine.readyToStart')}
+                      </div>
+                    </Show>
+
+                    <Show
+                      when={
+                        props.engineDoctorResolvedPath ||
+                        props.engineDoctorVersion ||
+                        props.engineDoctorNotes.length ||
+                        serveHelpOutput()
+                      }
+                    >
+                      <div class="rounded-xl bg-black/20 border border-zinc-800 p-3 space-y-3 text-xs text-zinc-400">
+                        <Show when={props.engineDoctorResolvedPath}>
+                          <div>
+                            <div class="text-[11px] text-zinc-500">{t('onboarding.engine.resolvedPath')}</div>
+                            <div class="font-mono break-all">{props.engineDoctorResolvedPath}</div>
+                          </div>
+                        </Show>
+                        <Show when={props.engineDoctorVersion}>
+                          <div>
+                            <div class="text-[11px] text-zinc-500">{t('onboarding.engine.version')}</div>
+                            <div class="font-mono">{props.engineDoctorVersion}</div>
+                          </div>
+                        </Show>
+                        <Show when={props.engineDoctorNotes.length}>
+                          <div>
+                            <div class="text-[11px] text-zinc-500">{t('onboarding.engine.searchNotes')}</div>
+                            <pre class="whitespace-pre-wrap break-words text-xs text-zinc-400">
+                              {props.engineDoctorNotes.join("\n")}
+                            </pre>
+                          </div>
+                        </Show>
+                        <Show when={serveHelpOutput()}>
+                          <div>
+                            <div class="text-[11px] text-zinc-500">{t('onboarding.engine.serveHelp')}</div>
+                            <pre class="whitespace-pre-wrap break-words text-xs text-zinc-400">
+                              {serveHelpOutput()}
+                            </pre>
+                          </div>
+                        </Show>
+                      </div>
+                    </Show>
+
+                    <Show when={props.engineInstallLogs}>
+                      <div class="rounded-xl bg-black/20 border border-zinc-800 p-3 text-xs text-zinc-400 whitespace-pre-wrap max-h-40 overflow-auto font-mono">
+                        {props.engineInstallLogs}
+                      </div>
+                    </Show>
+                  </div>
+                </div>
+              </Show>
+            </div>
+
 
             <Show when={props.error}>
               <div class="rounded-2xl bg-red-950/40 px-5 py-4 text-sm text-red-200 border border-red-500/20">
