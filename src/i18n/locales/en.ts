@@ -61,6 +61,7 @@ const translations = {
             size: 'Size',
             alpha: 'Alpha',
             beta: 'Beta',
+            prompt: 'Prompt',
         },
         toggles: {
             on: 'On',
@@ -234,6 +235,84 @@ const translations = {
                 'PATH uses your installed OpenCode (default). Sidecar will use a bundled binary when available.',
             sidecarWindows: 'Sidecar is currently unavailable on Windows.',
         },
+        mcp: {
+            title: 'MCP (Alpha)',
+            description: 'MCP servers let you connect services with your own credentials.',
+            alpha: {
+                title: 'MCP is in alpha while we harden OAuth with OpenCode.',
+                github: 'View issue #9510 on GitHub',
+                help: 'If you want to help, open a PR and include a short video showing the OAuth flow works end to end.',
+            },
+            toggle: {
+                show: 'Show advanced settings',
+                hide: 'Hide advanced settings',
+                advanced: {
+                    title: 'Advanced',
+                    description: 'Manual setup for custom servers.',
+                    show: 'Show',
+                    hide: 'Hide',
+                },
+            },
+            configured: '{count} configured',
+            updated: 'Updated {time}',
+            reload: {
+                title: 'Reload required',
+                description: 'Changes need a quick reload to activate MCP tools.',
+                button: 'Reload Engine',
+            },
+            quickConnect: {
+                title: 'Quick connect',
+                oauthOnly: 'OAuth-only',
+                connected: 'Connected',
+                connect: 'Connect',
+                connecting: 'Connecting',
+                noEnv: 'No environment variables required.',
+            },
+            connected: {
+                title: 'Connected',
+                fromConfig: 'From opencode.json',
+                empty: 'No MCP servers configured yet.',
+            },
+            forms: {
+                serverName: 'Server name',
+                serverUrl: 'Server URL',
+                oauth: 'OAuth',
+                apiKey: 'API key',
+                enabled: 'Enabled',
+                disabled: 'Disabled',
+                add: 'Add MCP',
+                verify: 'Verify connection',
+            },
+            guide: {
+                title: 'CLI guidance (run from your workspace)',
+                configNote: 'Config can live in opencode.json, opencode.jsonc, or .opencode/opencode.json.',
+            },
+            details: {
+                title: 'Details',
+                select: 'Select a server',
+                empty: 'Select a server to review status and config.',
+                capabilities: {
+                    title: 'Capabilities',
+                    tools: 'Tools enabled',
+                    oauth: 'OAuth ready',
+                    hint: 'Use the MCP server name in prompts to target its tools.',
+                },
+                nextSteps: {
+                    title: 'Next steps',
+                    reload: 'Reload the engine after adding a server.',
+                    auth: 'Run opencode mcp auth for OAuth servers if prompted.',
+                },
+                error: 'Connection failed',
+            },
+            status: {
+                connected: 'Connected',
+                needsAuth: 'Needs auth',
+                registerClient: 'Register client',
+                disabled: 'Disabled',
+                disconnected: 'Disconnected',
+                failed: 'Failed',
+            },
+        },
         model: {
             title: 'Model',
             description: 'Defaults + thinking controls for runs.',
@@ -320,9 +399,11 @@ const translations = {
 
     // ==================== 模板 ====================
     templates: {
+        title: 'Templates',
         workspace: 'Workspace Templates',
         global: 'Global Templates',
         empty: 'No templates yet.',
+        emptyList: 'Starter templates will appear here. Create one or save from a session.',
         create: 'Create Template',
         edit: 'Edit Template',
         delete: 'Delete Template',
@@ -331,43 +412,94 @@ const translations = {
             workspace: 'Workspace',
             global: 'Global',
         },
+        modal: {
+            title: 'Save Template',
+            subtitle: 'Reuse a workflow with one tap.',
+            placeholders: {
+                title: 'e.g. Daily standup summary',
+                description: 'What does this template do?',
+                prompt: 'Write the instructions you want to reuse...',
+            },
+            hint: 'This becomes the first user message.',
+        },
     },
 
     // ==================== 技能 ====================
     skills: {
+        title: 'Skills',
         installed: 'Installed Skills',
         installFromPackage: 'Install from OpenPackage',
         importLocal: 'Import Local Skill',
         searchPackages: 'Search packages',
         packageSource: 'Package source',
         empty: 'No skills installed yet.',
+        install: {
+            title: 'Install from OpenPackage',
+            hostOnly: 'Host mode only',
+            placeholder: 'github:anthropics/claude-code',
+            button: 'Install',
+            description: 'Installs OpenPackage packages into the current workspace. Skills should land in `.opencode/skill`.',
+        },
+        import: {
+            title: 'Import local skill',
+            button: 'Import',
+        },
+        curated: {
+            title: 'Curated packages',
+            notion: {
+                title: 'Notion CRM Enrichment Skills',
+                description: 'Add enrichment workflows for contacts, pipelines, and follow-ups.',
+            },
+            searchPlaceholder: 'Search packages or lists (e.g. claude, registry, community)',
+            noMatches: 'No curated matches. Try a different search.',
+            registryNote: 'Publishing to the OpenPackage registry (`opkg push`) requires authentication today. A registry search + curated list sync is planned.',
+        },
+        list: {
+            title: 'Installed skills',
+            empty: 'No skills detected yet.',
+        },
     },
 
     // ==================== 插件 ====================
     plugins: {
+        title: 'OpenCode Plugins',
+        description: 'Manage `opencode.json` for your project or global OpenCode plugins.',
         installed: 'Installed Plugins',
-        suggested: 'Suggested Plugins',
-        addPlugin: 'Add Plugin',
+        suggested: {
+            title: 'Suggested Plugins',
+            setup: 'Setup',
+            hideSetup: 'Hide setup',
+            add: 'Add',
+            added: 'Added',
+        },
+        addPlugin: {
+            label: 'Add plugin',
+            placeholder: 'opencode-wakatime',
+            hint: 'Add npm package names, e.g. opencode-wakatime',
+            button: 'Add',
+        },
+        config: {
+            label: 'Config',
+            notLoaded: 'Not loaded yet',
+        },
+        scope: {
+            project: 'Project',
+            global: 'Global',
+        },
         configPath: 'Config path',
         projectScope: 'Project Scope',
         globalScope: 'Global Scope',
-        empty: 'No plugins installed yet.',
+        empty: 'No plugins configured yet.',
+        status: {
+            enabled: 'Enabled',
+        },
+        guide: {
+            step: '{idx}. {title}',
+            open: 'Open:',
+            path: 'Path:',
+        },
     },
 
-    // ==================== MCP ====================
-    mcp: {
-        title: 'MCP Servers',
-        quickConnect: 'Quick Connect',
-        advancedConfig: 'Advanced Configuration',
-        serverName: 'Server Name',
-        serverUrl: 'Server URL',
-        oauth: 'OAuth Authentication',
-        testConnection: 'Test Connection',
-        connecting: 'Connecting...',
-        reloadRequired: 'Reload required',
-        reloadEngine: 'Reload Engine',
-        empty: 'No MCP servers configured yet.',
-    },
 
     // ==================== 验证 ====================
     validation: {

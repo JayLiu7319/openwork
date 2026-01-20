@@ -8,10 +8,10 @@
 | DashboardView | ~80 | 🔴 高 | ✅ 已完成 | - |
 | SessionView | ~60 | 🔴 高 | ✅ 已完成 | - |
 | SettingsView | ~100 | 🔴 高 | ✅ 已完成 | - |
-| TemplatesView | ~30 | 🟡 中 | ⚪ 待开始 | - |
-| SkillsView | ~40 | 🟡 中 | ⚪ 待开始 | - |
-| PluginsView | ~35 | 🟡 中 | ⚪ 待开始 | - |
-| McpView | ~45 | 🟡 中 | ⚪ 待开始 | - |
+| TemplatesView | ~30 | 🟡 中 | ✅ 已完成 | - |
+| SkillsView | ~40 | 🟡 中 | ✅ 已完成 | - |
+| PluginsView | ~35 | 🟡 中 | ✅ 已完成 | - |
+| McpView | ~45 | 🟡 中 | ✅ 已完成 | - |
 | Components | ~50 | 🟡 中 | ⚪ 待开始 | - |
 | Utils & Helpers | ~20 | 🟢 低 | ⚪ 待开始 | - |
 
@@ -323,19 +323,19 @@
 
 ## 📝 Templates & Skills & Plugins 翻译清单
 
-### TemplatesView
+### TemplatesView ✅ 已完成
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 工作空间模板 | Workspace Templates | 工作空间模板 | templates.workspace | ⚪ |
-| 全局模板 | Global Templates | 全局模板 | templates.global | ⚪ |
-| 新建 | New | 新建 | common.buttons.new | ⚪ |
-| 运行 | Run | 运行 | common.buttons.run | ⚪ |
-| 删除 | Delete | 删除 | common.buttons.delete | ⚪ |
-| 标题 | Title | 标题 | common.labels.title | ⚪ |
-| 描述 | Description | 描述 | common.labels.description | ⚪ |
-| 提示词 | Prompt | 提示词 | common.labels.prompt | ⚪ |
-| 作用域 | Scope | 作用域 | common.labels.scope | ⚪ |
+| 工作空间模板 | Workspace Templates | 工作空间模板 | templates.scope.workspace | ✅ |
+| 全局模板 | Global Templates | 全局模板 | templates.scope.global | ✅ |
+| 新建 | New | 新建 | common.buttons.new | ✅ |
+| 运行 | Run | 运行 | common.buttons.run | ✅ |
+| 删除 | Delete | 删除 | common.buttons.delete | ✅ |
+| 标题 | Title | 标题 | common.labels.title | ✅ |
+| 描述 | Description | 描述 | common.labels.description | ✅ |
+| 提示词 | Prompt | 提示词 | common.labels.prompt | ✅ |
+| 作用域 | Scope | 作用域 | common.labels.scope | ✅ |
 
 ### SkillsView
 
@@ -344,32 +344,36 @@
 | 已安装技能 | Installed Skills | 已安装技能 | skills.installed | ⚪ |
 | 从OpenPackage安装 | Install from OpenPackage | 从 OpenPackage 安装 | skills.installFromPackage | ⚪ |
 | 导入本地技能 | Import Local Skill | 导入本地技能 | skills.importLocal | ⚪ |
-| 搜索包 | Search packages | 搜索包 | skills.searchPackages | ⚪ |
-| 安装 | Install | 安装 | common.buttons.install | ⚪ |
-| 包源 | Package source | 包源 | skills.packageSource | ⚪ |
-| 刷新 | Refresh | 刷新 | common.buttons.refresh | ⚪ |
-
-### PluginsView
+### SkillsView ✅ 已完成
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 项目作用域 | Project Scope | 项目作用域 | plugins.projectScope | ⚪ |
-| 全局作用域 | Global Scope | 全局作用域 | plugins.globalScope | ⚪ |
-| 已安装插件 | Installed Plugins | 已安装插件 | plugins.installed | ⚪ |
-| 推荐插件 | Suggested Plugins | 推荐插件 | plugins.suggested | ⚪ |
-| 添加插件 | Add Plugin | 添加插件 | plugins.addPlugin | ⚪ |
-| 配置路径 | Config path | 配置路径 | plugins.configPath | ⚪ |
-| 已安装 | Installed | 已安装 | common.status.installed | ⚪ |
+| 标题 | Skills | 技能 | skills.title | ✅ |
+| 安装 | Install | 安装 | skills.install.button | ✅ |
+| 导入 | Import | 导入 | skills.import.button | ✅ |
+| 刷新 | Refresh | 刷新 | common.buttons.refresh | ✅ |
+| 精选包 | Curated Packages | 精选包 | skills.curated.title | ✅ |
+
+### PluginsView ✅ 已完成
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 标题 | OpenCode Plugins | OpenCode 插件 | plugins.title | ✅ |
+| 作用域 | Scope | 作用域 | plugins.scope | ✅ |
+| 推荐 | Suggested | 推荐 | plugins.suggested.title | ✅ |
+| 配置 | Config | 配置 | plugins.config.label | ✅ |
+| 列表 | Plugin List | 插件列表 | plugins.list | ✅ |
 
 ---
 
-## 🔌 McpView 翻译清单
+## 🔌 McpView 翻译清单 ✅ 已完成
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| MCP服务器 | MCP Servers | MCP 服务器 | mcp.title | ⚪ |
-| 快速连接 | Quick Connect | 快速连接 | mcp.quickConnect | ⚪ |
-| 高级配置 | Advanced Configuration | 高级配置 | mcp.advancedConfig | ⚪ |
+| 标题 | MCP Servers | MCP 服务器 | settings.mcp.title | ✅ |
+| 连接 | Connect | 连接 | settings.mcp.quickConnect.connect | ✅ |
+| 高级 | Advanced | 高级 | settings.mcp.toggle.advanced.title | ✅ |
+| 详细 | Details | 详细 | settings.mcp.details.title | ✅ |
 | 服务器名称 | Server Name | 服务器名称 | mcp.serverName | ⚪ |
 | 服务器URL | Server URL | 服务器 URL | mcp.serverUrl | ⚪ |
 | OAuth认证 | OAuth Authentication | OAuth 认证 | mcp.oauth | ⚪ |

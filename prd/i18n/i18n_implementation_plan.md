@@ -409,10 +409,10 @@ export default function OnboardingView(props) {
 
 按相同模式处理:
 - SessionView
-- TemplatesView
-- SkillsView
-- PluginsView
-- McpView
+- ✅ TemplatesView
+- ✅ SkillsView
+- ✅ PluginsView
+- ✅ McpView
 
 #### 步骤 2.3: 组件国际化
 

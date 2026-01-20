@@ -63,6 +63,7 @@ const zhCN: Translations = {
             size: '大小',
             alpha: '测试版',
             beta: 'Beta',
+            prompt: '提示词',
         },
         toggles: {
             on: '开',
@@ -236,6 +237,84 @@ const zhCN: Translations = {
                 'PATH 使用已安装的 OpenCode（默认）。Sidecar 将使用捆绑的二进制文件（如可用）。',
             sidecarWindows: 'Sidecar 目前在 Windows 上不可用。',
         },
+        mcp: {
+            title: 'MCP (Alpha)',
+            description: 'MCP 服务器允许您使用自己的凭据连接服务。',
+            alpha: {
+                title: 'MCP 处于 Alpha 阶段，我们正在加强与 OpenCode 的 OAuth 集成。',
+                github: '在 GitHub 上查看问题 #9510',
+                help: '如果您想帮忙，请提交 PR 并附上一段显示 OAuth 流程端到端工作的短视频。',
+            },
+            toggle: {
+                show: '显示高级设置',
+                hide: '隐藏高级设置',
+                advanced: {
+                    title: '高级',
+                    description: '自定义服务器的手动设置。',
+                    show: '显示',
+                    hide: '隐藏',
+                },
+            },
+            configured: '{count} 已配置',
+            updated: '更新于 {time}',
+            reload: {
+                title: '需要重新加载',
+                description: '更改需要快速重新加载才能激活 MCP 工具。',
+                button: '重新加载引擎',
+            },
+            quickConnect: {
+                title: '快速连接',
+                oauthOnly: '仅 OAuth',
+                connected: '已连接',
+                connect: '连接',
+                connecting: '连接中',
+                noEnv: '无需环境变量。',
+            },
+            connected: {
+                title: '已连接',
+                fromConfig: '来自 opencode.json',
+                empty: '尚未配置 MCP 服务器。',
+            },
+            forms: {
+                serverName: '服务器名称',
+                serverUrl: '服务器 URL',
+                oauth: 'OAuth',
+                apiKey: 'API 密钥',
+                enabled: '启用',
+                disabled: '禁用',
+                add: '添加 MCP',
+                verify: '验证连接',
+            },
+            guide: {
+                title: 'CLI 指南（在您的工作空间中运行）',
+                configNote: '配置可以位于 opencode.json, opencode.jsonc 或 .opencode/opencode.json 中。',
+            },
+            details: {
+                title: '详情',
+                select: '选择服务器',
+                empty: '选择服务器以查看状态和配置。',
+                capabilities: {
+                    title: '功能',
+                    tools: '工具已启用',
+                    oauth: 'OAuth 就绪',
+                    hint: '在提示词中使用 MCP 服务器名称以定位其工具。',
+                },
+                nextSteps: {
+                    title: '后续步骤',
+                    reload: '添加服务器后重新加载引擎。',
+                    auth: '如果收到提示，请为 OAuth 服务器运行 opencode mcp auth。',
+                },
+                error: '连接失败',
+            },
+            status: {
+                connected: '已连接',
+                needsAuth: '需要认证',
+                registerClient: '注册客户端',
+                disabled: '已禁用',
+                disconnected: '已断开',
+                failed: '失败',
+            },
+        },
         model: {
             title: '模型',
             description: '运行的默认设置和思考控制。',
@@ -320,9 +399,11 @@ const zhCN: Translations = {
 
     // ==================== 模板 ====================
     templates: {
+        title: '模板',
         workspace: '工作空间模板',
         global: '全局模板',
         empty: '暂无模板。',
+        emptyList: '入门模板将显示在这里。您可以创建一个或从会话中保存。',
         create: '创建模板',
         edit: '编辑模板',
         delete: '删除模板',
@@ -331,43 +412,94 @@ const zhCN: Translations = {
             workspace: '工作空间',
             global: '全局',
         },
+        modal: {
+            title: '保存模板',
+            subtitle: '一键复用工作流。',
+            placeholders: {
+                title: '例如：每日站会总结',
+                description: '这个模板是做什么的？',
+                prompt: '编写您想要复用的指令...',
+            },
+            hint: '这将作为第一条用户消息。',
+        },
     },
 
     // ==================== 技能 ====================
     skills: {
+        title: '技能',
         installed: '已安装技能',
         installFromPackage: '从 OpenPackage 安装',
         importLocal: '导入本地技能',
         searchPackages: '搜索包',
         packageSource: '包源',
         empty: '尚未安装技能。',
+        install: {
+            title: '从 OpenPackage 安装',
+            hostOnly: '仅本地模式',
+            placeholder: 'github:anthropics/claude-code',
+            button: '安装',
+            description: '将 OpenPackage 包安装到当前工作空间。技能将安装在 `.opencode/skill` 目录下。',
+        },
+        import: {
+            title: '导入本地技能',
+            button: '导入',
+        },
+        curated: {
+            title: '精选包',
+            notion: {
+                title: 'Notion CRM 增强技能',
+                description: '添加联系人、管道和跟进的增强工作流。',
+            },
+            searchPlaceholder: '搜索包或列表（例如 claude, registry, community）',
+            noMatches: '没有找到精选匹配项。请尝试不同的搜索。',
+            registryNote: '目前发布到 OpenPackage 注册表 (`opkg push`) 需要认证。计划中的功能包括注册表搜索和精选列表同步。',
+        },
+        list: {
+            title: '已安装技能',
+            empty: '尚未检测到技能。',
+        },
     },
 
     // ==================== 插件 ====================
     plugins: {
+        title: 'OpenCode 插件',
+        description: '管理项目或全局 OpenCode 插件的 `opencode.json` 配置。',
         installed: '已安装插件',
-        suggested: '推荐插件',
-        addPlugin: '添加插件',
+        suggested: {
+            title: '推荐插件',
+            setup: '设置',
+            hideSetup: '隐藏设置',
+            add: '添加',
+            added: '已添加',
+        },
+        addPlugin: {
+            label: '添加插件',
+            placeholder: 'opencode-wakatime',
+            hint: '添加 npm 包名，例如 opencode-wakatime',
+            button: '添加',
+        },
+        config: {
+            label: '配置',
+            notLoaded: '尚未加载',
+        },
+        scope: {
+            project: '项目',
+            global: '全局',
+        },
         configPath: '配置路径',
         projectScope: '项目作用域',
         globalScope: '全局作用域',
-        empty: '尚未安装插件。',
+        empty: '尚未配置插件。',
+        status: {
+            enabled: '已启用',
+        },
+        guide: {
+            step: '{idx}. {title}',
+            open: '打开:',
+            path: '路径:',
+        },
     },
 
-    // ==================== MCP ====================
-    mcp: {
-        title: 'MCP 服务器',
-        quickConnect: '快速连接',
-        advancedConfig: '高级配置',
-        serverName: '服务器名称',
-        serverUrl: '服务器 URL',
-        oauth: 'OAuth 认证',
-        testConnection: '测试连接',
-        connecting: '连接中...',
-        reloadRequired: '需要重载',
-        reloadEngine: '重载引擎',
-        empty: '尚未配置 MCP 服务器。',
-    },
 
     // ==================== 验证 ====================
     validation: {
