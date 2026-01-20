@@ -20,6 +20,7 @@ const translations = {
             run: 'Run',
             stop: 'Stop',
             change: 'Change',
+            newWorkspace: 'New Workspace...',
         },
         status: {
             connected: 'Connected',
@@ -62,12 +63,46 @@ const translations = {
             alpha: 'Alpha',
             beta: 'Beta',
             prompt: 'Prompt',
+            workspaces: 'Workspaces',
         },
         toggles: {
             on: 'On',
             off: 'Off',
             enabled: 'Enabled',
             disabled: 'Disabled',
+        },
+        placeholders: {
+            findWorkspace: 'Find workspace...',
+        },
+    },
+
+    // ==================== Workspace ====================
+    workspace: {
+        create: {
+            title: 'Create Workspace',
+            subtitle: 'Initialize a new folder-based workspace.',
+            submit: 'Create Workspace',
+            steps: {
+                selectFolder: 'Select Folder',
+                choosePreset: 'Choose Preset',
+            },
+            presets: {
+                starter: {
+                    name: 'Starter workspace',
+                    desc: 'Preconfigured to show you how to use plugins, templates, and skills.',
+                },
+                minimal: {
+                    name: 'Empty workspace',
+                    desc: 'Start with a blank folder and add what you need.',
+                },
+            },
+            folder: {
+                label: 'Choose a folder',
+                subLabel: 'You will choose a directory next.',
+                change: 'Change',
+                opening: 'Opening...',
+                required: 'Choose a folder to continue.',
+            },
         },
     },
 

@@ -96,9 +96,9 @@ export default function SkillsView(props: SkillsViewProps) {
             <Button
               variant="secondary"
               onClick={() => props.useCuratedPackage({
-                name: "Notion CRM Enrichment Skills",
+                name: t('skills.curated.notion.title'),
                 source: "https://github.com/different-ai/notion-crm-enrichment/tree/main/.claude/skills",
-                description: "Enrich Notion CRM data with ready-made skills.",
+                description: t('skills.curated.notion.description'),
                 tags: ["notion", "crm", "skills"],
                 installable: false,
               })}

@@ -382,7 +382,7 @@ export default function SettingsView(props: SettingsViewProps) {
           }
         >
           <div class="rounded-xl bg-black/20 border border-zinc-800 p-3 text-sm text-zinc-400">
-            Updates are only available in the desktop app.
+            {t('settings.updates.desktopOnly')}
           </div>
         </Show>
       </div>

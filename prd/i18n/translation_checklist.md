@@ -12,7 +12,7 @@
 | SkillsView | ~40 | 🟡 中 | ✅ 已完成 | - |
 | PluginsView | ~35 | 🟡 中 | ✅ 已完成 | - |
 | McpView | ~45 | 🟡 中 | ✅ 已完成 | - |
-| Components | ~50 | 🟡 中 | ⚪ 待开始 | - |
+| Components | ~50 | 🟡 中 | 🟡 进行中 | - |
 | Utils & Helpers | ~20 | 🟢 低 | ⚪ 待开始 | - |
 
 **总计**: 约 500 个翻译项
@@ -337,13 +337,7 @@
 | 提示词 | Prompt | 提示词 | common.labels.prompt | ✅ |
 | 作用域 | Scope | 作用域 | common.labels.scope | ✅ |
 
-### SkillsView
 
-| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
-|------|---------|---------|-----|------|
-| 已安装技能 | Installed Skills | 已安装技能 | skills.installed | ⚪ |
-| 从OpenPackage安装 | Install from OpenPackage | 从 OpenPackage 安装 | skills.installFromPackage | ⚪ |
-| 导入本地技能 | Import Local Skill | 导入本地技能 | skills.importLocal | ⚪ |
 ### SkillsView ✅ 已完成
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
@@ -391,6 +385,24 @@
 ### Button 组件
 
 按钮文本通过props传入，不需要在组件内国际化
+
+### WorkspacePicker ✅ 已完成
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 占位符 | Find workspace... | 查找工作空间... | common.placeholders.findWorkspace | ✅ |
+| 标签 | Workspaces | 工作空间 | common.labels.workspaces | ✅ |
+| 按钮 | New Workspace... | 新建工作空间... | common.buttons.newWorkspace | ✅ |
+
+### CreateWorkspaceModal ✅ 已完成
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 标题 | Create Workspace | 创建工作空间 | workspace.create.title | ✅ |
+| 步骤1 | Select Folder | 选择文件夹 | workspace.create.steps.selectFolder | ✅ |
+| 步骤2 | Choose Preset | 选择预设 | workspace.create.steps.choosePreset | ✅ |
+| 预设1 | Starter workspace | 入门工作空间 | workspace.create.presets.starter.name | ✅ |
+| 预设2 | Empty workspace | 空工作空间 | workspace.create.presets.minimal.name | ✅ |
 
 ### Modal 组件
 

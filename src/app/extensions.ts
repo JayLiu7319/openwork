@@ -123,10 +123,10 @@ export function createExtensionsStore(options: {
 
       const next: SkillCard[] = Array.isArray(data)
         ? data.map((entry) => ({
-            name: entry.name,
-            description: entry.description,
-            path: formatSkillPath(entry.location),
-          }))
+          name: entry.name,
+          description: entry.description,
+          path: formatSkillPath(entry.location),
+        }))
         : [];
 
       setSkills(next);

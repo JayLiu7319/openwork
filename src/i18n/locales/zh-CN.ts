@@ -22,6 +22,7 @@ const zhCN: Translations = {
             run: '运行',
             stop: '停止',
             change: '更改',
+            newWorkspace: '新建工作空间...',
         },
         status: {
             connected: '已连接',
@@ -64,12 +65,46 @@ const zhCN: Translations = {
             alpha: '测试版',
             beta: 'Beta',
             prompt: '提示词',
+            workspaces: '工作空间',
         },
         toggles: {
             on: '开',
             off: '关',
             enabled: '已启用',
             disabled: '已禁用',
+        },
+        placeholders: {
+            findWorkspace: '查找工作空间...',
+        },
+    },
+
+    // ==================== 工作空间 ====================
+    workspace: {
+        create: {
+            title: '创建工作空间',
+            subtitle: '初始化一个新的基于文件夹的工作空间。',
+            submit: '创建工作空间',
+            steps: {
+                selectFolder: '选择文件夹',
+                choosePreset: '选择预设',
+            },
+            presets: {
+                starter: {
+                    name: '入门工作空间',
+                    desc: '预配置演示如何使用插件、模板和技能。',
+                },
+                minimal: {
+                    name: '空工作空间',
+                    desc: '从空文件夹开始，按需添加内容。',
+                },
+            },
+            folder: {
+                label: '选择一个文件夹',
+                subLabel: '接下来您将选择一个目录。',
+                change: '更改',
+                opening: '打开中...',
+                required: '请选择一个文件夹以继续。',
+            },
         },
     },
 

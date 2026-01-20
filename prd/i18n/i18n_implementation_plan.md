@@ -421,6 +421,10 @@ export default function OnboardingView(props) {
 - 表单: 标签、占位符、验证消息
 - 通知: 成功/错误/警告消息
 
+**执行进度:**
+- ✅ WorkspacePicker: 已完成
+- ✅ CreateWorkspaceModal: 已完成
+
 #### 步骤 2.4: 创建中文翻译
 
 **文件:** [src/i18n/locales/zh-CN.ts](file:///d:/projects/openwork/src/i18n/locales/zh-CN.ts)
