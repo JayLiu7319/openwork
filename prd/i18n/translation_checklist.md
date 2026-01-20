@@ -6,8 +6,8 @@
 |------|---------|--------|------|--------|
 | OnboardingView | ~40 | 🔴 高 | ✅ 已完成 | - |
 | DashboardView | ~80 | 🔴 高 | ✅ 已完成 | - |
-| SessionView | ~60 | 🔴 高 | ⚪ 待开始 | - |
-| SettingsView | ~100 | 🔴 高 | ⚪ 待开始 | - |
+| SessionView | ~60 | 🔴 高 | ✅ 已完成 | - |
+| SettingsView | ~100 | 🔴 高 | ✅ 已完成 | - |
 | TemplatesView | ~30 | 🟡 中 | ⚪ 待开始 | - |
 | SkillsView | ~40 | 🟡 中 | ⚪ 待开始 | - |
 | PluginsView | ~35 | 🟡 中 | ⚪ 待开始 | - |
@@ -144,7 +144,85 @@
 
 ---
 
-## ⚙️ SettingsView 翻译清单
+## 💬 SessionView 翻译清单 ✅ 已完成
+
+**文件:** `src/views/SessionView.tsx`
+
+### 核心界面
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 未选择 | No session selected | 未选择会话 | session.noSelected | ✅ |
+| 返回按钮 | Back to dashboard | 返回仪表盘 | session.backToDashboard | ✅ |
+| 新建任务 | New task | 新建任务 | session.newTask | ✅ |
+| 最近列表 | Recents | 最近 | session.recents | ✅ |
+| 本地提示 | These tasks run locally... | 这些任务在本地运行... | session.localOnly | ✅ |
+
+### 空状态
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 准备就好 | Ready to work | 准备工作 | session.ready | ✅ |
+| 描述任务 | Describe a task... | 描述一个任务... | session.describeTask | ✅ |
+
+### 消息与步骤
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 隐藏步骤 | Hide steps | 隐藏步骤 | session.steps.hide | ✅ |
+| 查看步骤 | View steps | 查看步骤 | session.steps.view | ✅ |
+| 步骤展开 | Steps will show as the task unfolds. | 步骤将随着任务的展开而显示。 | session.steps.unfold | ✅ |
+
+### 产物与侧边栏
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 产物标签 | Artifacts | 产物 | session.artifacts.label | ✅ |
+| 打开 | Open | 打开 | session.artifacts.open | ✅ |
+| 显示 | Reveal | 显示 | session.artifacts.reveal | ✅ |
+| 已打开提示 | Opened in default app. | 已在默认应用中打开。 | session.artifacts.opened | ✅ |
+| 缺少路径 | Artifact path missing. | 缺少产物路径。 | session.artifacts.missingPath | ✅ |
+| 仅桌面 | Open is only available in the desktop app. | “打开”仅在桌面应用中可用。 | session.artifacts.desktopOnly | ✅ |
+| 文档类型 | Document | 文档 | session.artifacts.document | ✅ |
+| 空产物 | No artifacts yet. | 暂无产物。 | session.artifacts.empty | ✅ |
+| 侧边栏-进度 | Progress | 进度 | session.sidebar.progress | ✅ |
+| 侧边栏-上下文 | Context | 上下文 | session.sidebar.context | ✅ |
+
+### 上下文信息
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 活动插件 | Active plugins | 活动插件 | session.context.activePlugins | ✅ |
+| 无插件 | No plugins loaded. | 未加载插件。 | session.context.noPlugins | ✅ |
+| 选定文件夹 | Selected folders | 选定文件夹 | session.context.selectedFolders | ✅ |
+| 工作文件 | Working files | 工作文件 | session.context.workingFiles | ✅ |
+| 暂无 | None yet. | 暂无。 | session.context.noneYet | ✅ |
+
+### 输入区域
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 占位符 | Ask OpenWork... | 询问 OpenWork... | session.input.placeholder | ✅ |
+| 运行 | Run | 运行 | session.input.run | ✅ |
+| Notion提示 | Try it now... | 立即尝试：在 Notion 中设置我的 CRM | session.input.tryNotion | ✅ |
+| 插入提示 | Insert prompt | 插入提示词 | session.input.insertPrompt | ✅ |
+
+### 权限请求
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 需要权限 | Permission Required | 需要权限 | session.permissions.required | ✅ |
+| 请求中 | OpenCode is requesting... | OpenCode 请求权限以继续。 | session.permissions.requesting | ✅ |
+| 权限 | Permission | 权限 | session.permissions.permission | ✅ |
+| 范围 | Scope | 范围 | session.permissions.scope | ✅ |
+| 详情 | Details | 详情 | session.permissions.details | ✅ |
+| 拒绝 | Deny | 拒绝 | session.permissions.deny | ✅ |
+| 仅一次 | Once | 仅一次 | session.permissions.once | ✅ |
+| 允许会话 | Allow for session | 允许本次会话 | session.permissions.allowSession | ✅ |
+
+---
+
+## ⚙️ SettingsView 翻译清单 ✅ 已完成
 
 **文件:** `src/views/SettingsView.tsx`
 
@@ -152,94 +230,94 @@
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 连接 | Connection | 连接 | settings.connection.title | ⚪ |
-| 开发者模式 | Enable Developer Mode / Disable Developer Mode | 启用开发者模式 / 禁用开发者模式 | settings.connection.developerMode | ⚪ |
-| 停止引擎 | Stop engine | 停止引擎 | settings.connection.stopEngine | ⚪ |
-| 引擎源 | Engine source | 引擎源 | settings.connection.engineSource | ⚪ |
-| PATH说明 | PATH uses your installed OpenCode (default). Sidecar will use a bundled binary when available. | PATH 使用已安装的 OpenCode（默认）。Sidecar 将使用捆绑的二进制文件（如可用）。 | settings.connection.engineSourceDescription | ⚪ |
-| Windows提示 | Sidecar is currently unavailable on Windows. | Sidecar 目前在 Windows 上不可用。 | settings.connection.sidecarWindows | ⚪ |
+| 连接 | Connection | 连接 | settings.connection.title | ✅ |
+| 开发者模式 | Enable Developer Mode / Disable Developer Mode | 启用开发者模式 / 禁用开发者模式 | settings.connection.developerMode | ✅ |
+| 停止引擎 | Stop engine | 停止引擎 | settings.connection.stopEngine | ✅ |
+| 引擎源 | Engine source | 引擎源 | settings.connection.engineSource | ✅ |
+| PATH说明 | PATH uses your installed OpenCode (default). Sidecar will use a bundled binary when available. | PATH 使用已安装的 OpenCode（默认）。Sidecar 将使用捆绑的二进制文件（如可用）。 | settings.connection.engineSourceDescription | ✅ |
+| Windows提示 | Sidecar is currently unavailable on Windows. | Sidecar 目前在 Windows 上不可用。 | settings.connection.sidecarWindows | ✅ |
 
 ### 模型设置
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 模型 | Model | 模型 | settings.model.title | ⚪ |
-| 描述 | Defaults + thinking controls for runs. | 运行的默认设置和思考控制。 | settings.model.description | ⚪ |
-| 更改 | Change | 更改 | common.buttons.change | ⚪ |
-| 思考 | Thinking | 思考 | settings.model.thinking | ⚪ |
-| 思考描述 | Show thinking parts (Developer mode only). | 显示思考部分（仅开发者模式）。 | settings.model.thinkingDescription | ⚪ |
-| 开/关 | On / Off | 开 / 关 | common.toggles.onOff | ⚪ |
-| 模型变体 | Model variant | 模型变体 | settings.model.variant | ⚪ |
-| 编辑 | Edit | 编辑 | common.buttons.edit | ⚪ |
+| 模型 | Model | 模型 | settings.model.title | ✅ |
+| 描述 | Defaults + thinking controls for runs. | 运行的默认设置和思考控制。 | settings.model.description | ✅ |
+| 更改 | Change | 更改 | common.buttons.change | ✅ |
+| 思考 | Thinking | 思考 | settings.model.thinking | ✅ |
+| 思考描述 | Show thinking parts (Developer mode only). | 显示思考部分（仅开发者模式）。 | settings.model.thinkingDescription | ✅ |
+| 开/关 | On / Off | 开 / 关 | common.toggles.onOff | ✅ |
+| 模型变体 | Model variant | 模型变体 | settings.model.variant | ✅ |
+| 编辑 | Edit | 编辑 | common.buttons.edit | ✅ |
 
 ### 演示模式
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 演示模式 | Demo mode | 演示模式 | settings.demo.title | ⚪ |
-| 描述 | Lightweight scripted states for recording and review. | 用于录制和审查的轻量级脚本状态。 | settings.demo.description | ⚪ |
-| 启用 | Enable demo mode | 启用演示模式 | settings.demo.enable | ⚪ |
-| 替换数据 | Replaces live data with demo sequences. | 使用演示序列替换实时数据。 | settings.demo.replacesData | ⚪ |
-| 序列说明 | Demo sequences swap in scripted sessions, artifacts, and workspace context. | 演示序列交换脚本化的会话、构件和工作空间上下文。 | settings.demo.sequenceDescription | ⚪ |
+| 演示模式 | Demo mode | 演示模式 | settings.demo.title | ✅ |
+| 描述 | Lightweight scripted states for recording and review. | 用于录制和审查的轻量级脚本状态。 | settings.demo.description | ✅ |
+| 启用 | Enable demo mode | 启用演示模式 | settings.demo.enable | ✅ |
+| 替换数据 | Replaces live data with demo sequences. | 使用演示序列替换实时数据。 | settings.demo.replacesData | ✅ |
+| 序列说明 | Demo sequences swap in scripted sessions, artifacts, and workspace context. | 演示序列交换脚本化的会话、构件和工作空间上下文。 | settings.demo.sequenceDescription | ✅ |
 
 ### 更新设置
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 更新 | Updates | 更新 | settings.updates.title | ⚪ |
-| 描述 | Keep OpenWork up to date. | 保持 OpenWork 最新。 | settings.updates.description | ⚪ |
-| 仅桌面版 | Updates are only available in the desktop app. | 更新仅在桌面应用中可用。 | settings.updates.desktopOnly | ⚪ |
-| 自动检查 | Automatic checks | 自动检查 | settings.updates.autoCheck | ⚪ |
-| 频率 | Once per day (quiet) | 每天一次（静默） | settings.updates.frequency | ⚪ |
-| 检查中 | Checking... | 检查中... | settings.updates.checking | ⚪ |
-| 可用更新 | Update available: v{version} | 可用更新：v{version} | settings.updates.available | ⚪ |
-| 下载中 | Downloading... | 下载中... | settings.updates.downloading | ⚪ |
-| 准备安装 | Ready to install: v{version} | 准备安装：v{version} | settings.updates.ready | ⚪ |
-| 检查失败 | Update check failed | 更新检查失败 | settings.updates.error | ⚪ |
-| 已是最新 | Up to date | 已是最新 | settings.updates.upToDate | ⚪ |
-| 上次检查 | Last checked {time} | 上次检查 {time} | settings.updates.lastChecked | ⚪ |
-| 发布于 | Published {date} | 发布于 {date} | settings.updates.published | ⚪ |
-| 检查按钮 | Check | 检查 | settings.updates.checkButton | ⚪ |
-| 下载按钮 | Download | 下载 | settings.updates.downloadButton | ⚪ |
-| 安装按钮 | Install & Restart | 安装并重启 | settings.updates.installButton | ⚪ |
-| 停止运行提示 | Stop active runs to update | 停止活动任务以更新 | settings.updates.stopRunsHint | ⚪ |
+| 更新 | Updates | 更新 | settings.updates.title | ✅ |
+| 描述 | Keep OpenWork up to date. | 保持 OpenWork 最新。 | settings.updates.description | ✅ |
+| 仅桌面版 | Updates are only available in the desktop app. | 更新仅在桌面应用中可用。 | settings.updates.desktopOnly | ✅ |
+| 自动检查 | Automatic checks | 自动检查 | settings.updates.autoCheck | ✅ |
+| 频率 | Once per day (quiet) | 每天一次（静默） | settings.updates.frequency | ✅ |
+| 检查中 | Checking... | 检查中... | settings.updates.checking | ✅ |
+| 可用更新 | Update available: v{version} | 可用更新：v{version} | settings.updates.available | ✅ |
+| 下载中 | Downloading... | 下载中... | settings.updates.downloading | ✅ |
+| 准备安装 | Ready to install: v{version} | 准备安装：v{version} | settings.updates.ready | ✅ |
+| 检查失败 | Update check failed | 更新检查失败 | settings.updates.error | ✅ |
+| 已是最新 | Up to date | 已是最新 | settings.updates.upToDate | ✅ |
+| 上次检查 | Last checked {time} | 上次检查 {time} | settings.updates.lastChecked | ✅ |
+| 发布于 | Published {date} | 发布于 {date} | settings.updates.published | ✅ |
+| 检查按钮 | Check | 检查 | settings.updates.checkButton | ✅ |
+| 下载按钮 | Download | 下载 | settings.updates.downloadButton | ✅ |
+| 安装按钮 | Install & Restart | 安装并重启 | settings.updates.installButton | ✅ |
+| 停止运行提示 | Stop active runs to update | 停止活动任务以更新 | settings.updates.stopRunsHint | ✅ |
 
 ### 启动设置
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 启动 | Startup | 启动 | settings.startup.title | ⚪ |
-| 本地模式 | host mode | 本地模式 | settings.startup.hostMode | ⚪ |
-| 客户端模式 | client mode | 客户端模式 | settings.startup.clientMode | ⚪ |
-| 切换 | Switch | 切换 | settings.startup.switch | ⚪ |
-| 重置默认 | Reset default startup mode | 重置默认启动模式 | settings.startup.reset | ⚪ |
-| 重置说明 | This clears your saved preference and shows mode selection on next launch. | 这将清除您保存的偏好，下次启动时显示模式选择。 | settings.startup.resetDescription | ⚪ |
+| 启动 | Startup | 启动 | settings.startup.title | ✅ |
+| 本地模式 | host mode | 本地模式 | settings.startup.hostMode | ✅ |
+| 客户端模式 | client mode | 客户端模式 | settings.startup.clientMode | ✅ |
+| 切换 | Switch | 切换 | settings.startup.switch | ✅ |
+| 重置默认 | Reset default startup mode | 重置默认启动模式 | settings.startup.reset | ✅ |
+| 重置说明 | This clears your saved preference and shows mode selection on next launch. | 这将清除您保存的偏好，下次启动时显示模式选择。 | settings.startup.resetDescription | ✅ |
 
 ### 高级设置
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 高级 | Advanced | 高级 | settings.advanced.title | ⚪ |
-| 重置说明 | Reset OpenWork local state to retest onboarding. | 重置 OpenWork 本地状态以重新测试引导流程。 | settings.advanced.description | ⚪ |
-| 重置引导 | Reset onboarding | 重置引导 | settings.advanced.resetOnboarding | ⚪ |
-| 重置引导说明 | Clears OpenWork preferences and restarts the app. | 清除 OpenWork 偏好设置并重启应用。 | settings.advanced.resetOnboardingDescription | ⚪ |
-| 重置应用数据 | Reset app data | 重置应用数据 | settings.advanced.resetAppData | ⚪ |
-| 重置数据说明 | More aggressive. Clears OpenWork cache + app data. | 更彻底。清除 OpenWork 缓存和应用数据。 | settings.advanced.resetAppDataDescription | ⚪ |
-| 重置按钮 | Reset | 重置 | settings.advanced.resetButton | ⚪ |
-| 需输入提示 | Requires typing RESET and will restart the app. | 需要输入 RESET 并将重启应用。 | settings.advanced.resetConfirmHint | ⚪ |
-| 停止运行提示 | Stop active runs to reset | 停止活动任务以重置 | settings.advanced.stopRunsHint | ⚪ |
+| 高级 | Advanced | 高级 | settings.advanced.title | ✅ |
+| 重置说明 | Reset OpenWork local state to retest onboarding. | 重置 OpenWork 本地状态以重新测试引导流程。 | settings.advanced.description | ✅ |
+| 重置引导 | Reset onboarding | 重置引导 | settings.advanced.resetOnboarding | ✅ |
+| 重置引导说明 | Clears OpenWork preferences and restarts the app. | 清除 OpenWork 偏好设置并重启应用。 | settings.advanced.resetOnboardingDescription | ✅ |
+| 重置应用数据 | Reset app data | 重置应用数据 | settings.advanced.resetAppData | ✅ |
+| 重置数据说明 | More aggressive. Clears OpenWork cache + app data. | 更彻底。清除 OpenWork 缓存和应用数据。 | settings.advanced.resetAppDataDescription | ✅ |
+| 重置按钮 | Reset | 重置 | settings.advanced.resetButton | ✅ |
+| 需输入提示 | Requires typing RESET and will restart the app. | 需要输入 RESET 并将重启应用。 | settings.advanced.resetConfirmHint | ✅ |
+| 停止运行提示 | Stop active runs to reset | 停止活动任务以重置 | settings.advanced.stopRunsHint | ✅ |
 
 ### 开发者板块
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 开发者 | Developer | 开发者 | settings.developer.title | ⚪ |
-| OpenCode缓存 | OpenCode cache | OpenCode 缓存 | settings.developer.cache | ⚪ |
-| 缓存说明 | Repairs cached data used to start the engine. Safe to run. | 修复用于启动引擎的缓存数据。安全运行。 | settings.developer.cacheDescription | ⚪ |
-| 修复缓存 | Repair cache / Repairing cache | 修复缓存 / 正在修复缓存 | settings.developer.repairCache | ⚪ |
-| 需要桌面版 | Cache repair requires the desktop app | 缓存修复需要桌面应用 | settings.developer.requiresDesktop | ⚪ |
-| 待处理权限 | Pending permissions | 待处理权限 | settings.developer.pendingPermissions | ⚪ |
-| 最近事件 | Recent events | 最近事件 | settings.developer.recentEvents | ⚪ |
+| 开发者 | Developer | 开发者 | settings.developer.title | ✅ |
+| OpenCode缓存 | OpenCode cache | OpenCode 缓存 | settings.developer.cache | ✅ |
+| 缓存说明 | Repairs cached data used to start the engine. Safe to run. | 修复用于启动引擎的缓存数据。安全运行。 | settings.developer.cacheDescription | ✅ |
+| 修复缓存 | Repair cache / Repairing cache | 修复缓存 / 正在修复缓存 | settings.developer.repairCache | ✅ |
+| 需要桌面版 | Cache repair requires the desktop app | 缓存修复需要桌面应用 | settings.developer.requiresDesktop | ✅ |
+| 待处理权限 | Pending permissions | 待处理权限 | settings.developer.pendingPermissions | ✅ |
+| 最近事件 | Recent events | 最近事件 | settings.developer.recentEvents | ✅ |
 
 ---
 

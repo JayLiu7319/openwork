@@ -45,6 +45,11 @@ const translations = {
             filter: 'Filter',
             sort: 'Sort',
         },
+        errors: {
+            required: 'Required',
+            invalid: 'Invalid value',
+            unknown: 'Unknown error',
+        },
         labels: {
             title: 'Title',
             description: 'Description',
@@ -124,6 +129,67 @@ const translations = {
         },
     },
 
+    // ==================== 会话 ====================
+    session: {
+        noSelected: 'No session selected',
+        backToDashboard: 'Back to dashboard',
+        newTask: 'New task',
+        recents: 'Recents',
+        localOnly: "These tasks run locally and aren't synced across devices.",
+        ready: 'Ready to work',
+        describeTask: "Describe a task. I'll show progress and ask for permissions when needed.",
+        steps: {
+            hide: 'Hide steps',
+            view: 'View steps',
+            unfold: 'Steps will show as the task unfolds.',
+        },
+        artifacts: {
+            label: 'Artifacts',
+            open: 'Open',
+            reveal: 'Reveal',
+            opened: 'Opened in default app.',
+            revealed: 'Revealed in file manager.',
+            missingPath: 'Artifact path missing.',
+            desktopOnly: 'Open is only available in the desktop app.',
+            document: 'Document',
+            empty: 'No artifacts yet.',
+        },
+        model: {
+            label: 'Model',
+            ready: 'Ready',
+            connect: 'Connect a provider to customize this.',
+            standard: 'Standard',
+        },
+        sidebar: {
+            progress: 'Progress',
+            artifacts: 'Artifacts',
+            context: 'Context',
+        },
+        context: {
+            activePlugins: 'Active plugins',
+            noPlugins: 'No plugins loaded.',
+            selectedFolders: 'Selected folders',
+            workingFiles: 'Working files',
+            noneYet: 'None yet.',
+        },
+        input: {
+            placeholder: 'Ask OpenWork...',
+            run: 'Run',
+            tryNotion: 'Try it now: set up my CRM in Notion',
+            insertPrompt: 'Insert prompt',
+        },
+        permissions: {
+            required: 'Permission Required',
+            requesting: 'OpenCode is requesting permission to continue.',
+            permission: 'Permission',
+            scope: 'Scope',
+            details: 'Details',
+            deny: 'Deny',
+            once: 'Once',
+            allowSession: 'Allow for session',
+        },
+    },
+
     // ==================== 仪表盘 ====================
     dashboard: {
         nav: {
@@ -182,6 +248,12 @@ const translations = {
             replacesData: 'Replaces live data with demo sequences.',
             sequenceDescription:
                 'Demo sequences swap in scripted sessions, artifacts, and workspace context.',
+            sequences: {
+                coldOpen: 'Cold open',
+                scheduler: 'Scheduler',
+                summaries: 'Summaries',
+                groceries: 'Groceries',
+            },
         },
         updates: {
             title: 'Updates',
@@ -201,6 +273,7 @@ const translations = {
             downloadButton: 'Download',
             installButton: 'Install & Restart',
             stopRunsHint: 'Stop active runs to update',
+            notSupported: 'Updates are not supported in this environment.',
         },
         startup: {
             title: 'Startup',
@@ -236,6 +309,12 @@ const translations = {
             title: 'Language',
             description: 'Choose your preferred language',
             switchLanguage: 'Switch language',
+        },
+        notion: {
+            connected: 'Connected',
+            reloadRequired: 'Reload required',
+            connectionFailed: 'Connection failed',
+            notConnected: 'Not connected',
         },
     },
 

@@ -395,7 +395,7 @@ export default function OnboardingView(props) {
 - ✅ 最近会话列表及时间格式化
 - ✅ 移动端导航菜单
 
-##### 2.2.3 SettingsView 国际化
+##### ✅ 2.2.3 SettingsView 国际化 - 已完成
 
 **文件:** [src/views/SettingsView.tsx](file:///d:/projects/openwork/src/views/SettingsView.tsx)
 

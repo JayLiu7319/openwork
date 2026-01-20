@@ -321,14 +321,14 @@ export default function DashboardView(props: DashboardViewProps) {
             {navItem(
               "mcp",
               <span class="inline-flex items-center gap-2">
-                MCPs
+                {t('dashboard.nav.mcps')}
                 <span class="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-200">
-                  Alpha
+                  {t('common.labels.alpha')}
                 </span>
               </span>,
               <Server size={18} />,
             )}
-            {navItem("settings", "Settings", <Settings size={18} />)}
+            {navItem("settings", t('dashboard.nav.settings'), <Settings size={18} />)}
           </nav>
         </div>
 

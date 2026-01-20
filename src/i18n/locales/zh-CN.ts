@@ -47,6 +47,11 @@ const zhCN: Translations = {
             filter: '筛选',
             sort: '排序',
         },
+        errors: {
+            required: '必填',
+            invalid: '无效值',
+            unknown: '未知错误',
+        },
         labels: {
             title: '标题',
             description: '描述',
@@ -126,6 +131,67 @@ const zhCN: Translations = {
         },
     },
 
+    // ==================== 会话 ====================
+    session: {
+        noSelected: '未选择会话',
+        backToDashboard: '返回仪表盘',
+        newTask: '新建任务',
+        recents: '最近',
+        localOnly: '这些任务在本地运行，不会跨设备同步。',
+        ready: '准备工作',
+        describeTask: '描述一个任务。我将显示进度并在需要时请求权限。',
+        steps: {
+            hide: '隐藏步骤',
+            view: '查看步骤',
+            unfold: '步骤将随着任务的展开而显示。',
+        },
+        artifacts: {
+            label: '产物',
+            open: '打开',
+            reveal: '显示',
+            opened: '已在默认应用中打开。',
+            revealed: '已在文件管理器中显示。',
+            missingPath: '缺少产物路径。',
+            desktopOnly: '“打开”仅在桌面应用中可用。',
+            document: '文档',
+            empty: '暂无产物。',
+        },
+        model: {
+            label: '模型',
+            ready: '就绪',
+            connect: '连接提供商以自定义此项。',
+            standard: '标准',
+        },
+        sidebar: {
+            progress: '进度',
+            artifacts: '产物',
+            context: '上下文',
+        },
+        context: {
+            activePlugins: '活动插件',
+            noPlugins: '未加载插件。',
+            selectedFolders: '选定文件夹',
+            workingFiles: '工作文件',
+            noneYet: '暂无。',
+        },
+        input: {
+            placeholder: '询问 OpenWork...',
+            run: '运行',
+            tryNotion: '立即尝试：在 Notion 中设置我的 CRM',
+            insertPrompt: '插入提示词',
+        },
+        permissions: {
+            required: '需要权限',
+            requesting: 'OpenCode 请求权限以继续。',
+            permission: '权限',
+            scope: '范围',
+            details: '详情',
+            deny: '拒绝',
+            once: '仅一次',
+            allowSession: '允许本次会话',
+        },
+    },
+
     // ==================== 仪表盘 ====================
     dashboard: {
         nav: {
@@ -183,6 +249,12 @@ const zhCN: Translations = {
             enable: '启用演示模式',
             replacesData: '使用演示序列替换实时数据。',
             sequenceDescription: '演示序列交换脚本化的会话、构件和工作空间上下文。',
+            sequences: {
+                coldOpen: '冷启动',
+                scheduler: '日程安排',
+                summaries: '摘要生成',
+                groceries: '杂货清单',
+            },
         },
         updates: {
             title: '更新',
@@ -202,6 +274,7 @@ const zhCN: Translations = {
             downloadButton: '下载',
             installButton: '安装并重启',
             stopRunsHint: '停止活动任务以更新',
+            notSupported: '当前环境不支持更新。',
         },
         startup: {
             title: '启动',
@@ -236,6 +309,12 @@ const zhCN: Translations = {
             title: '语言',
             description: '选择您偏好的语言',
             switchLanguage: '切换语言',
+        },
+        notion: {
+            connected: '已连接',
+            reloadRequired: '需要重载',
+            connectionFailed: '连接失败',
+            notConnected: '未连接',
         },
     },
 
