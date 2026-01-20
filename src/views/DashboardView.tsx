@@ -10,7 +10,8 @@ import type {
 } from "../app/types";
 import type { McpDirectoryInfo } from "../app/constants";
 import type { WorkspaceInfo } from "../lib/tauri";
-import { formatRelativeTime } from "../app/utils";
+// import { formatRelativeTime } from "../app/utils";
+import { useI18n, formatRelativeTime } from "../i18n";
 
 import Button from "../components/Button";
 import OpenWorkLogo from "../components/OpenWorkLogo";
@@ -199,22 +200,23 @@ export type DashboardViewProps = {
 };
 
 export default function DashboardView(props: DashboardViewProps) {
+  const { t, locale } = useI18n();
   const title = createMemo(() => {
     switch (props.tab) {
       case "sessions":
-        return "Sessions";
+        return t('dashboard.nav.sessions');
       case "templates":
-        return "Templates";
+        return t('dashboard.nav.templates');
       case "skills":
-        return "Skills";
+        return t('dashboard.nav.skills');
       case "plugins":
-        return "Plugins";
+        return t('dashboard.nav.plugins');
       case "mcp":
-        return "MCPs";
+        return t('dashboard.nav.mcps');
       case "settings":
-        return "Settings";
+        return t('dashboard.nav.settings');
       default:
-        return "Dashboard";
+        return t('dashboard.nav.dashboard');
     }
   });
 
@@ -283,16 +285,15 @@ export default function DashboardView(props: DashboardViewProps) {
     });
   });
 
-  const navItem = (t: DashboardTab, label: any, icon: any) => {
-    const active = () => props.tab === t;
+  const navItem = (tabName: DashboardTab, label: any, icon: any) => {
+    const active = () => props.tab === tabName;
     return (
       <button
-        class={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-          active()
-            ? "bg-zinc-900 text-white"
-            : "text-zinc-500 hover:text-white hover:bg-zinc-900/50"
-        }`}
-        onClick={() => props.setTab(t)}
+        class={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${active()
+          ? "bg-zinc-900 text-white"
+          : "text-zinc-500 hover:text-white hover:bg-zinc-900/50"
+          }`}
+        onClick={() => props.setTab(tabName)}
       >
         {icon}
         {label}
@@ -312,11 +313,11 @@ export default function DashboardView(props: DashboardViewProps) {
           </div>
 
           <nav class="space-y-1">
-            {navItem("home", "Dashboard", <Command size={18} />)}
-            {navItem("sessions", "Sessions", <Play size={18} />)}
-            {navItem("templates", "Templates", <FileText size={18} />)}
-            {navItem("skills", "Skills", <Package size={18} />)}
-            {navItem("plugins", "Plugins", <Cpu size={18} />)}
+            {navItem("home", t('dashboard.nav.dashboard'), <Command size={18} />)}
+            {navItem("sessions", t('dashboard.nav.sessions'), <Play size={18} />)}
+            {navItem("templates", t('dashboard.nav.templates'), <FileText size={18} />)}
+            {navItem("skills", t('dashboard.nav.skills'), <Package size={18} />)}
+            {navItem("plugins", t('dashboard.nav.plugins'), <Cpu size={18} />)}
             {navItem(
               "mcp",
               <span class="inline-flex items-center gap-2">
@@ -334,27 +335,25 @@ export default function DashboardView(props: DashboardViewProps) {
         <div class="space-y-4">
           <div class="px-3 py-3 rounded-xl bg-zinc-900/50 border border-zinc-800">
             <div class="flex items-center gap-2 text-xs font-medium text-zinc-400 mb-2">
-              Connection
+              {t('dashboard.connection.title')}
               <Show when={props.developerMode}>
                 <span class="text-zinc-600">
-                  {props.mode === "host" ? "Local Engine" : "Client Mode"}
+                  {props.mode === "host" ? t('dashboard.connection.localEngine') : t('dashboard.connection.clientMode')}
                 </span>
               </Show>
             </div>
             <div class="flex items-center gap-2">
               <div
-                class={`w-2 h-2 rounded-full ${
-                  props.clientConnected
-                    ? "bg-emerald-500 animate-pulse"
-                    : "bg-zinc-600"
-                }`}
+                class={`w-2 h-2 rounded-full ${props.clientConnected
+                  ? "bg-emerald-500 animate-pulse"
+                  : "bg-zinc-600"
+                  }`}
               />
               <span
-                class={`text-sm font-medium ${
-                  props.clientConnected ? "text-emerald-500" : "text-zinc-500"
-                }`}
+                class={`text-sm font-medium ${props.clientConnected ? "text-emerald-500" : "text-zinc-500"
+                  }`}
               >
-                {props.clientConnected ? "Connected" : "Not connected"}
+                {props.clientConnected ? t('common.status.connected') : t('common.status.notConnected')}
               </span>
             </div>
             <Show when={props.developerMode}>
@@ -371,7 +370,7 @@ export default function DashboardView(props: DashboardViewProps) {
               disabled={props.busy}
               class="w-full"
             >
-              Stop & Disconnect
+              {t('dashboard.connection.stopAndDisconnect')}
             </Button>
           </Show>
 
@@ -382,7 +381,7 @@ export default function DashboardView(props: DashboardViewProps) {
               disabled={props.busy}
               class="w-full"
             >
-              Disconnect
+              {t('common.buttons.disconnect')}
             </Button>
           </Show>
         </div>
@@ -420,7 +419,7 @@ export default function DashboardView(props: DashboardViewProps) {
                 title={props.newTaskDisabled ? props.busyHint ?? "Busy" : ""}
               >
                 <Play size={16} />
-                New Task
+                {t('dashboard.home.newTaskButton')}
               </Button>
             </Show>
 
@@ -442,7 +441,7 @@ export default function DashboardView(props: DashboardViewProps) {
                 disabled={props.busy}
               >
                 <Plus size={16} />
-                New
+                {t('common.buttons.new')}
               </Button>
             </Show>
           </div>
@@ -456,11 +455,10 @@ export default function DashboardView(props: DashboardViewProps) {
                   <div class="bg-zinc-950 rounded-[22px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="space-y-2 text-center md:text-left">
                       <h2 class="text-2xl font-semibold text-white">
-                        What should we do today?
+                        {t('dashboard.home.welcomeTitle')}
                       </h2>
                       <p class="text-zinc-400">
-                        Describe an outcome. OpenWork will run it and keep an
-                        audit trail.
+                        {t('dashboard.home.welcomeDescription')}
                       </p>
                     </div>
                     <Button
@@ -472,7 +470,7 @@ export default function DashboardView(props: DashboardViewProps) {
                       class="w-full md:w-auto py-3 px-6 text-base"
                     >
                       <Play size={18} />
-                      New Task
+                      {t('dashboard.home.newTaskButton')}
                     </Button>
                   </div>
                 </div>
@@ -481,13 +479,13 @@ export default function DashboardView(props: DashboardViewProps) {
               <section>
                 <div class="flex items-center justify-between mb-4">
                   <h3 class="text-sm font-medium text-zinc-400 uppercase tracking-wider">
-                    Quick Start Templates
+                    {t('dashboard.home.quickTemplates')}
                   </h3>
                   <button
                     class="text-sm text-zinc-500 hover:text-white"
                     onClick={() => props.setTab("templates")}
                   >
-                    View all
+                    {t('common.actions.viewAll')}
                   </button>
                 </div>
 
@@ -495,23 +493,23 @@ export default function DashboardView(props: DashboardViewProps) {
                   when={quickTemplates().length}
                   fallback={
                     <div class="bg-zinc-900/30 border border-zinc-800/50 rounded-2xl p-6 text-sm text-zinc-500">
-                      No templates yet. Starter templates will appear here.
+                      {t('dashboard.home.noTemplates')}
                     </div>
                   }
                 >
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <For each={quickTemplates()}>
-                      {(t) => (
+                      {(tpl) => (
                         <button
-                          onClick={() => props.runTemplate(t)}
+                          onClick={() => props.runTemplate(tpl)}
                           class="group p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 hover:bg-zinc-900 hover:border-zinc-700 transition-all text-left"
                         >
                           <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                             <FileText size={20} class="text-indigo-400" />
                           </div>
-                          <h4 class="font-medium text-white mb-1">{t.title}</h4>
+                          <h4 class="font-medium text-white mb-1">{tpl.title}</h4>
                           <p class="text-sm text-zinc-500">
-                            {t.description || "Run a saved workflow"}
+                            {tpl.description || t('dashboard.home.runWorkflow')}
                           </p>
                         </button>
                       )}
@@ -522,18 +520,17 @@ export default function DashboardView(props: DashboardViewProps) {
 
               <section>
                 <h3 class="text-sm font-medium text-zinc-400 uppercase tracking-wider mb-4">
-                  Recent Sessions
+                  {t('dashboard.sessions.recent')}
                 </h3>
 
                 <div class="bg-zinc-900/30 border border-zinc-800/50 rounded-2xl overflow-hidden">
                   <For each={props.sessions.slice(0, 3)}>
                     {(s, idx) => (
                       <button
-                        class={`w-full p-4 flex items-center justify-between hover:bg-zinc-800/50 transition-colors text-left ${
-                          idx() !== Math.min(props.sessions.length, 3) - 1
-                            ? "border-b border-zinc-800/50"
-                            : ""
-                        }`}
+                        class={`w-full p-4 flex items-center justify-between hover:bg-zinc-800/50 transition-colors text-left ${idx() !== Math.min(props.sessions.length, 3) - 1
+                          ? "border-b border-zinc-800/50"
+                          : ""
+                          }`}
                         onPointerDown={(e) => {
                           e.currentTarget.setPointerCapture?.(e.pointerId);
                         }}
@@ -551,7 +548,7 @@ export default function DashboardView(props: DashboardViewProps) {
                             </div>
                             <div class="text-xs text-zinc-500 flex items-center gap-2">
                               <span class="flex items-center gap-1">
-                                {formatRelativeTime(s.time.updated)}
+                                {formatRelativeTime(s.time.updated, locale())}
                               </span>
                               <Show
                                 when={
@@ -560,7 +557,7 @@ export default function DashboardView(props: DashboardViewProps) {
                                 }
                               >
                                 <span class="text-[11px] px-2 py-0.5 rounded-full border border-zinc-700/60 text-zinc-500">
-                                  this workspace
+                                  {t('dashboard.sessions.thisWorkspace')}
                                 </span>
                               </Show>
                             </div>
@@ -569,7 +566,7 @@ export default function DashboardView(props: DashboardViewProps) {
                         <div class="flex items-center gap-4">
                           <span class="text-xs px-2 py-0.5 rounded-full border border-zinc-700/60 text-zinc-400 flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-current" />
-                            {props.sessionStatusById[s.id] ?? "idle"}
+                            {t(`common.status.${props.sessionStatusById[s.id] ?? "idle"}` as any, undefined, props.sessionStatusById[s.id] ?? "idle")}
                           </span>
                         </div>
                       </button>
@@ -578,7 +575,7 @@ export default function DashboardView(props: DashboardViewProps) {
 
                   <Show when={!props.sessions.length}>
                     <div class="p-6 text-sm text-zinc-500">
-                      No sessions yet.
+                      {t('dashboard.sessions.empty')}
                     </div>
                   </Show>
                 </div>
@@ -588,18 +585,17 @@ export default function DashboardView(props: DashboardViewProps) {
             <Match when={props.tab === "sessions"}>
               <section>
                 <h3 class="text-sm font-medium text-zinc-400 uppercase tracking-wider mb-4">
-                  Recent Sessions
+                  {t('dashboard.sessions.recent')}
                 </h3>
 
                 <div class="bg-zinc-900/30 border border-zinc-800/50 rounded-2xl overflow-hidden">
                   <For each={props.sessions.slice(0, 3)}>
                     {(s, idx) => (
                       <button
-                        class={`w-full p-4 flex items-center justify-between hover:bg-zinc-800/50 transition-colors text-left ${
-                          idx() !== Math.min(props.sessions.length, 3) - 1
-                            ? "border-b border-zinc-800/50"
-                            : ""
-                        }`}
+                        class={`w-full p-4 flex items-center justify-between hover:bg-zinc-800/50 transition-colors text-left ${idx() !== Math.min(props.sessions.length, 3) - 1
+                          ? "border-b border-zinc-800/50"
+                          : ""
+                          }`}
                         onPointerDown={(e) => {
                           e.currentTarget.setPointerCapture?.(e.pointerId);
                         }}
@@ -617,7 +613,7 @@ export default function DashboardView(props: DashboardViewProps) {
                             </div>
                             <div class="text-xs text-zinc-500 flex items-center gap-2">
                               <span class="flex items-center gap-1">
-                                {formatRelativeTime(s.time.updated)}
+                                {formatRelativeTime(s.time.updated, locale())}
                               </span>
                               <Show
                                 when={
@@ -626,7 +622,7 @@ export default function DashboardView(props: DashboardViewProps) {
                                 }
                               >
                                 <span class="text-[11px] px-2 py-0.5 rounded-full border border-zinc-700/60 text-zinc-500">
-                                  this workspace
+                                  {t('dashboard.sessions.thisWorkspace')}
                                 </span>
                               </Show>
                             </div>
@@ -635,7 +631,7 @@ export default function DashboardView(props: DashboardViewProps) {
                         <div class="flex items-center gap-4">
                           <span class="text-xs px-2 py-0.5 rounded-full border border-zinc-700/60 text-zinc-400 flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-current" />
-                            {props.sessionStatusById[s.id] ?? "idle"}
+                            {t(`common.status.${props.sessionStatusById[s.id] ?? "idle"}` as any, undefined, props.sessionStatusById[s.id] ?? "idle")}
                           </span>
                         </div>
                       </button>
@@ -644,7 +640,7 @@ export default function DashboardView(props: DashboardViewProps) {
 
                   <Show when={!props.sessions.length}>
                     <div class="p-6 text-sm text-zinc-500">
-                      No sessions yet.
+                      {t('dashboard.sessions.empty')}
                     </div>
                   </Show>
                 </div>
@@ -737,52 +733,52 @@ export default function DashboardView(props: DashboardViewProps) {
             </Match>
 
             <Match when={props.tab === "settings"}>
-                <SettingsView
-                  mode={props.mode}
-                  baseUrl={props.baseUrl}
-                  headerStatus={props.headerStatus}
-                  busy={props.busy}
-                  developerMode={props.developerMode}
-                  toggleDeveloperMode={props.toggleDeveloperMode}
-                  stopHost={props.stopHost}
-                  engineSource={props.engineSource}
-                  setEngineSource={props.setEngineSource}
-                  isWindows={props.isWindows}
-                  defaultModelLabel={props.defaultModelLabel}
-                  defaultModelRef={props.defaultModelRef}
-                  openDefaultModelPicker={props.openDefaultModelPicker}
-                  showThinking={props.showThinking}
-                  toggleShowThinking={props.toggleShowThinking}
-                  modelVariantLabel={props.modelVariantLabel}
-                  editModelVariant={props.editModelVariant}
-                  updateAutoCheck={props.updateAutoCheck}
-                  toggleUpdateAutoCheck={props.toggleUpdateAutoCheck}
-                  updateStatus={props.updateStatus}
-                  updateEnv={props.updateEnv}
-                  appVersion={props.appVersion}
-                  checkForUpdates={props.checkForUpdates}
-                  downloadUpdate={props.downloadUpdate}
-                  installUpdateAndRestart={props.installUpdateAndRestart}
-                  anyActiveRuns={props.anyActiveRuns}
-                  onResetStartupPreference={props.onResetStartupPreference}
-                  openResetModal={props.openResetModal}
-                  resetModalBusy={props.resetModalBusy}
-                  pendingPermissions={props.pendingPermissions}
-                  events={props.events}
-                  safeStringify={props.safeStringify}
-                  repairOpencodeCache={props.repairOpencodeCache}
-                  cacheRepairBusy={props.cacheRepairBusy}
-                  cacheRepairResult={props.cacheRepairResult}
-                  notionStatus={props.notionStatus}
-                  notionStatusDetail={props.notionStatusDetail}
-                  notionError={props.notionError}
-                  notionBusy={props.notionBusy}
-                  connectNotion={props.connectNotion}
-                  demoMode={props.demoMode}
-                  toggleDemoMode={props.toggleDemoMode}
-                  demoSequence={props.demoSequence}
-                  setDemoSequence={props.setDemoSequence}
-                />
+              <SettingsView
+                mode={props.mode}
+                baseUrl={props.baseUrl}
+                headerStatus={props.headerStatus}
+                busy={props.busy}
+                developerMode={props.developerMode}
+                toggleDeveloperMode={props.toggleDeveloperMode}
+                stopHost={props.stopHost}
+                engineSource={props.engineSource}
+                setEngineSource={props.setEngineSource}
+                isWindows={props.isWindows}
+                defaultModelLabel={props.defaultModelLabel}
+                defaultModelRef={props.defaultModelRef}
+                openDefaultModelPicker={props.openDefaultModelPicker}
+                showThinking={props.showThinking}
+                toggleShowThinking={props.toggleShowThinking}
+                modelVariantLabel={props.modelVariantLabel}
+                editModelVariant={props.editModelVariant}
+                updateAutoCheck={props.updateAutoCheck}
+                toggleUpdateAutoCheck={props.toggleUpdateAutoCheck}
+                updateStatus={props.updateStatus}
+                updateEnv={props.updateEnv}
+                appVersion={props.appVersion}
+                checkForUpdates={props.checkForUpdates}
+                downloadUpdate={props.downloadUpdate}
+                installUpdateAndRestart={props.installUpdateAndRestart}
+                anyActiveRuns={props.anyActiveRuns}
+                onResetStartupPreference={props.onResetStartupPreference}
+                openResetModal={props.openResetModal}
+                resetModalBusy={props.resetModalBusy}
+                pendingPermissions={props.pendingPermissions}
+                events={props.events}
+                safeStringify={props.safeStringify}
+                repairOpencodeCache={props.repairOpencodeCache}
+                cacheRepairBusy={props.cacheRepairBusy}
+                cacheRepairResult={props.cacheRepairResult}
+                notionStatus={props.notionStatus}
+                notionStatusDetail={props.notionStatusDetail}
+                notionError={props.notionError}
+                notionBusy={props.notionBusy}
+                connectNotion={props.connectNotion}
+                demoMode={props.demoMode}
+                toggleDemoMode={props.toggleDemoMode}
+                demoSequence={props.demoSequence}
+                setDemoSequence={props.setDemoSequence}
+              />
 
             </Match>
           </Switch>
@@ -800,7 +796,7 @@ export default function DashboardView(props: DashboardViewProps) {
                     onClick={props.repairOpencodeCache}
                     disabled={props.cacheRepairBusy || !props.developerMode}
                   >
-                    {props.cacheRepairBusy ? "Repairing cache" : "Repair cache"}
+                    {props.cacheRepairBusy ? t('settings.developer.repairingCache') : t('settings.developer.repairCache')}
                   </Button>
                   <Button
                     variant="outline"
@@ -808,7 +804,7 @@ export default function DashboardView(props: DashboardViewProps) {
                     onClick={props.stopHost}
                     disabled={props.busy}
                   >
-                    Retry
+                    {t('common.status.retry')}
                   </Button>
                   <Show when={props.cacheRepairResult}>
                     <span class="text-xs text-red-200/80">
@@ -824,67 +820,60 @@ export default function DashboardView(props: DashboardViewProps) {
         <nav class="md:hidden fixed bottom-0 left-0 right-0 border-t border-zinc-800 bg-zinc-950/90 backdrop-blur-md">
           <div class="mx-auto max-w-5xl px-4 py-3 grid grid-cols-6 gap-2">
             <button
-              class={`flex flex-col items-center gap-1 text-xs ${
-                props.tab === "home" ? "text-white" : "text-zinc-500"
-              }`}
+              class={`flex flex-col items-center gap-1 text-xs ${props.tab === "home" ? "text-white" : "text-zinc-500"
+                }`}
               onClick={() => props.setTab("home")}
             >
               <Command size={18} />
-              Home
+              {t('dashboard.nav.dashboard')}
             </button>
             <button
-              class={`flex flex-col items-center gap-1 text-xs ${
-                props.tab === "sessions" ? "text-white" : "text-zinc-500"
-              }`}
+              class={`flex flex-col items-center gap-1 text-xs ${props.tab === "sessions" ? "text-white" : "text-zinc-500"
+                }`}
               onClick={() => props.setTab("sessions")}
             >
               <Play size={18} />
-              Runs
+              {t('dashboard.nav.sessions')}
             </button>
             <button
-              class={`flex flex-col items-center gap-1 text-xs ${
-                props.tab === "templates" ? "text-white" : "text-zinc-500"
-              }`}
+              class={`flex flex-col items-center gap-1 text-xs ${props.tab === "templates" ? "text-white" : "text-zinc-500"
+                }`}
               onClick={() => props.setTab("templates")}
             >
               <FileText size={18} />
-              Templates
+              {t('dashboard.nav.templates')}
             </button>
             <button
-              class={`flex flex-col items-center gap-1 text-xs ${
-                props.tab === "skills" ? "text-white" : "text-zinc-500"
-              }`}
+              class={`flex flex-col items-center gap-1 text-xs ${props.tab === "skills" ? "text-white" : "text-zinc-500"
+                }`}
               onClick={() => props.setTab("skills")}
             >
               <Package size={18} />
-              Skills
+              {t('dashboard.nav.skills')}
             </button>
             <button
-              class={`flex flex-col items-center gap-1 text-xs ${
-                props.tab === "plugins" ? "text-white" : "text-zinc-500"
-              }`}
+              class={`flex flex-col items-center gap-1 text-xs ${props.tab === "plugins" ? "text-white" : "text-zinc-500"
+                }`}
               onClick={() => props.setTab("plugins")}
             >
               <Cpu size={18} />
-              Plugins
+              {t('dashboard.nav.plugins')}
             </button>
             <button
-              class={`flex flex-col items-center gap-1 text-xs ${
-                props.tab === "mcp" ? "text-white" : "text-zinc-500"
-              }`}
+              class={`flex flex-col items-center gap-1 text-xs ${props.tab === "mcp" ? "text-white" : "text-zinc-500"
+                }`}
               onClick={() => props.setTab("mcp")}
             >
               <Server size={18} />
-              MCPs
+              {t('dashboard.nav.mcps')}
             </button>
             <button
-              class={`flex flex-col items-center gap-1 text-xs ${
-                props.tab === "settings" ? "text-white" : "text-zinc-500"
-              }`}
+              class={`flex flex-col items-center gap-1 text-xs ${props.tab === "settings" ? "text-white" : "text-zinc-500"
+                }`}
               onClick={() => props.setTab("settings")}
             >
               <Settings size={18} />
-              Settings
+              {t('dashboard.nav.settings')}
             </button>
           </div>
         </nav>

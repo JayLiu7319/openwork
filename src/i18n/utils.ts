@@ -76,13 +76,13 @@ export function formatRelativeTime(
     const formats = {
         en: {
             justNow: 'just now',
-            secondsAgo: (n: number) => `${n} second${n > 1 ? 's' : ''} ago`,
-            minutesAgo: (n: number) => `${n} minute${n > 1 ? 's' : ''} ago`,
-            hoursAgo: (n: number) => `${n} hour${n > 1 ? 's' : ''} ago`,
-            daysAgo: (n: number) => `${n} day${n > 1 ? 's' : ''} ago`,
-            weeksAgo: (n: number) => `${n} week${n > 1 ? 's' : ''} ago`,
-            monthsAgo: (n: number) => `${n} month${n > 1 ? 's' : ''} ago`,
-            yearsAgo: (n: number) => `${n} year${n > 1 ? 's' : ''} ago`,
+            secondsAgo: (n: number) => `${n}s ago`,
+            minutesAgo: (n: number) => `${n}m ago`,
+            hoursAgo: (n: number) => `${n}h ago`,
+            daysAgo: (n: number) => `${n}d ago`,
+            weeksAgo: (n: number) => `${n}w ago`,
+            monthsAgo: (n: number) => `${n}mo ago`,
+            yearsAgo: (n: number) => `${n}y ago`,
         },
         'zh-CN': {
             justNow: '刚刚',

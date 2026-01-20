@@ -4,8 +4,8 @@
 
 | 模块 | 文本数量 | 优先级 | 状态 | 负责人 |
 |------|---------|--------|------|--------|
-| OnboardingView | ~40 | 🔴 高 | ⚪ 待开始 | - |
-| DashboardView | ~80 | 🔴 高 | ⚪ 待开始 | - |
+| OnboardingView | ~40 | 🔴 高 | ✅ 已完成 | - |
+| DashboardView | ~80 | 🔴 高 | ✅ 已完成 | - |
 | SessionView | ~60 | 🔴 高 | ⚪ 待开始 | - |
 | SettingsView | ~100 | 🔴 高 | ⚪ 待开始 | - |
 | TemplatesView | ~30 | 🟡 中 | ⚪ 待开始 | - |
@@ -19,7 +19,7 @@
 
 ---
 
-## 🎯 OnboardingView 翻译清单
+## 🎯 OnboardingView 翻译清单 ✅ 已完成
 
 **文件:** `src/views/OnboardingView.tsx`
 
@@ -27,51 +27,70 @@
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 主标题 | OpenWork | OpenWork | onboarding.title | ⚪ |
-| 副标题 | How would you like to run OpenWork today? | 您希望如何使用 OpenWork？ | onboarding.mode.subtitle | ⚪ |
-| Host模式标题 | Run on this computer | 在本机运行 | onboarding.mode.host.title | ⚪ |
-| Host模式描述 | OpenWork runs OpenCode locally and keeps your work private. | OpenWork 在本地运行 OpenCode，保护您的工作隐私。 | onboarding.mode.host.description | ⚪ |
-| Client模式链接 | Connect as a Client (Remote Pairing) | 连接为客户端（远程协作） | onboarding.mode.client.link | ⚪ |
-| 记住选择 | Remember my choice for next time | 下次自动使用此选项 | onboarding.mode.rememberChoice | ⚪ |
-| 已运行提示标题 | Engine already running | 引擎正在运行 | onboarding.mode.engineRunning.title | ⚪ |
-| 已运行提示描述 | Attach to the existing session on this device. | 连接到此设备上的现有会话。 | onboarding.mode.engineRunning.description | ⚪ |
-| 附加按钮 | Attach | 附加 | onboarding.mode.engineRunning.button | ⚪ |
+| 主标题 | OpenWork | OpenWork | onboarding.title | ✅ |
+| 副标题 | How would you like to run OpenWork today? | 您希望如何使用 OpenWork？ | onboarding.mode.subtitle | ✅ |
+| Host模式标题 | Run on this computer | 在本机运行 | onboarding.mode.host.title | ✅ |
+| Host模式描述 | OpenWork runs OpenCode locally and keeps your work private. | OpenWork 在本地运行 OpenCode，保护您的工作隐私。 | onboarding.mode.host.description | ✅ |
+| Client模式链接 | Connect as a Client (Remote Pairing) | 连接为客户端（远程协作） | onboarding.mode.client.link | ✅ |
+| 记住选择 | Remember my choice for next time | 下次自动使用此选项 | onboarding.mode.rememberChoice | ✅ |
+| 已运行提示标题 | Engine already running | 引擎正在运行 | onboarding.mode.engineRunning.title | ✅ |
+| 已运行提示描述 | Attach to the existing session on this device. | 连接到此设备上的现有会话。 | onboarding.mode.engineRunning.description | ✅ |
+| 附加按钮 | Attach | 附加 | onboarding.mode.engineRunning.button | ✅ |
 
 ### Host模式 - 工作空间创建
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 首次标题 | Create your first workspace | 创建您的第一个工作空间 | onboarding.workspace.firstTitle | ⚪ |
-| 标题 | Create a workspace | 创建工作空间 | onboarding.workspace.title | ⚪ |
-| 描述 | Choose a folder and preset to set up your workspace. | 选择文件夹和预设来设置您的工作空间。 | onboarding.workspace.description | ⚪ |
-| 开始按钮 | Start OpenWork | 启动 OpenWork | onboarding.workspace.startButton | ⚪ |
-| 返回按钮 | Back | 返回 | common.buttons.back | ⚪ |
+| 首次标题 | Create your first workspace | 创建您的第一个工作空间 | onboarding.workspace.firstTitle | ✅ |
+| 标题 | Create a workspace | 创建工作空间 | onboarding.workspace.title | ✅ |
+| 描述 | Choose a folder and preset to set up your workspace. | 选择文件夹和预设来设置您的工作空间。 | onboarding.workspace.description | ✅ |
+| 开始按钮 | Start OpenWork | 启动 OpenWork | onboarding.workspace.startButton | ✅ |
+| 返回按钮 | Back | 返回 | common.buttons.back | ✅ |
 
 ### Client模式 - 连接配置
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 标题 | Connect to Host | 连接到主机 | onboarding.client.title | ⚪ |
-| 描述 | Pair with an existing OpenCode server (LAN or tunnel). | 连接到现有的 OpenCode 服务器（局域网或隧道）。 | onboarding.client.description | ⚪ |
-| URL标签 | Server URL | 服务器 URL | onboarding.client.urlLabel | ⚪ |
-| URL占位符 | http://127.0.0.1:4096 | http://127.0.0.1:4096 | onboarding.client.urlPlaceholder | ⚪ |
-| 目录标签 | Directory (optional) | 目录（可选） | onboarding.client.directoryLabel | ⚪ |
-| 目录占位符 | /path/to/project | /path/to/project | onboarding.client.directoryPlaceholder | ⚪ |
-| 目录提示 | Use if your host runs multiple workspaces. | 如果主机运行多个工作空间则需填写。 | onboarding.client.directoryHint | ⚪ |
-| 连接按钮 | Connect | 连接 | common.buttons.connect | ⚪ |
+| 标题 | Connect to Host | 连接到主机 | onboarding.client.title | ✅ |
+| 描述 | Pair with an existing OpenCode server (LAN or tunnel). | 连接到现有的 OpenCode 服务器（局域网或隧道）。 | onboarding.client.description | ✅ |
+| URL标签 | Server URL | 服务器 URL | onboarding.client.urlLabel | ✅ |
+| URL占位符 | http://127.0.0.1:4096 | http://127.0.0.1:4096 | onboarding.client.urlPlaceholder | ✅ |
+| 目录标签 | Directory (optional) | 目录（可选） | onboarding.client.directoryLabel | ✅ |
+| 目录占位符 | /path/to/project | /path/to/project | onboarding.client.directoryPlaceholder | ✅ |
+| 目录提示 | Use if your host runs multiple workspaces. | 如果主机运行多个工作空间则需填写。 | onboarding.client.directoryHint | ✅ |
+| 连接按钮 | Connect | 连接 | common.buttons.connect | ✅ |
 
 ### 连接中状态
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| Host加载 | Starting OpenWork... | 正在启动 OpenWork... | onboarding.connecting.hostTitle | ⚪ |
-| Host描述 | Getting everything ready | 正在准备就绪 | onboarding.connecting.hostDescription | ⚪ |
-| Client加载 | Searching for Host... | 正在搜索主机... | onboarding.connecting.clientTitle | ⚪ |
-| Client描述 | Verifying secure handshake | 正在验证安全握手 | onboarding.connecting.clientDescription | ⚪ |
+| Host加载 | Starting OpenWork... | 正在启动 OpenWork... | onboarding.connecting.hostTitle | ✅ |
+| Host描述 | Getting everything ready | 正在准备就绪 | onboarding.connecting.hostDescription | ✅ |
+| Client加载 | Searching for Host... | 正在搜索主机... | onboarding.connecting.clientTitle | ✅ |
+| Client描述 | Verifying secure handshake | 正在验证安全握手 | onboarding.connecting.clientDescription | ✅ |
+
+### 引擎状态（新增）
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 引擎标题 | OpenCode engine | OpenCode 引擎 | onboarding.engine.title | ✅ |
+| 检查中 | Checking OpenCode CLI... | 正在检查 OpenCode CLI... | onboarding.engine.checking | ✅ |
+| 未找到 | OpenCode CLI not found. | 未找到 OpenCode CLI。 | onboarding.engine.notFound | ✅ |
+| 需要更新 | OpenCode CLI needs an update for serve. | OpenCode CLI 需要更新以支持 serve 功能。 | onboarding.engine.needsUpdate | ✅ |
+| 就绪 | OpenCode CLI ready. | OpenCode CLI 就绪。 | onboarding.engine.ready | ✅ |
+| 准备启动 | OpenCode is ready to start in host mode. | OpenCode 已准备好以本地模式启动。 | onboarding.engine.readyToStart | ✅ |
+| Windows安装 | Install OpenCode for Windows... | 请安装 Windows 版 OpenCode... | onboarding.engine.installWindows | ✅ |
+| 安装提示 | Install OpenCode to enable host mode... | 安装 OpenCode 以启用本地模式... | onboarding.engine.installHint | ✅ |
+| 安装按钮 | Install OpenCode | 安装 OpenCode | onboarding.engine.installButton | ✅ |
+| 重新检查 | Re-check | 重新检查 | onboarding.engine.recheck | ✅ |
+| 解析路径 | Resolved path | 解析路径 | onboarding.engine.resolvedPath | ✅ |
+| 版本 | Version | 版本 | onboarding.engine.version | ✅ |
+| 搜索备注 | Search notes | 搜索备注 | onboarding.engine.searchNotes | ✅ |
+| serve帮助 | serve --help output | serve --help 输出 | onboarding.engine.serveHelp | ✅ |
 
 ---
 
-## 🎛️ DashboardView 翻译清单
+## 🎛️ DashboardView 翻译清单 ✅ 已完成
 
 **文件:** `src/views/DashboardView.tsx`
 
@@ -79,49 +98,49 @@
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 导航-仪表盘 | Dashboard | 仪表盘 | dashboard.nav.dashboard | ⚪ |
-| 导航-会话 | Sessions | 会话 | dashboard.nav.sessions | ⚪ |
-| 导航-模板 | Templates | 模板 | dashboard.nav.templates | ⚪ |
-| 导航-技能 | Skills | 技能 | dashboard.nav.skills | ⚪ |
-| 导航-插件 | Plugins | 插件 | dashboard.nav.plugins | ⚪ |
-| 导航-MCP | MCPs | MCP 服务器 | dashboard.nav.mcps | ⚪ |
-| 导航-设置 | Settings | 设置 | dashboard.nav.settings | ⚪ |
-| Alpha标签 | Alpha | 测试版 | common.labels.alpha | ⚪ |
+| 导航-仪表盘 | Dashboard | 仪表盘 | dashboard.nav.dashboard | ✅ |
+| 导航-会话 | Sessions | 会话 | dashboard.nav.sessions | ✅ |
+| 导航-模板 | Templates | 模板 | dashboard.nav.templates | ✅ |
+| 导航-技能 | Skills | 技能 | dashboard.nav.skills | ✅ |
+| 导航-插件 | Plugins | 插件 | dashboard.nav.plugins | ✅ |
+| 导航-MCP | MCPs | MCP 服务器 | dashboard.nav.mcps | ✅ |
+| 导航-设置 | Settings | 设置 | dashboard.nav.settings | ✅ |
+| Alpha标签 | Alpha | 测试版 | common.labels.alpha | ✅ |
 
 ### 连接状态
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 连接标题 | Connection | 连接 | dashboard.connection.title | ⚪ |
-| 已连接 | Connected | 已连接 | common.status.connected | ⚪ |
-| 未连接 | Not connected | 未连接 | common.status.notConnected | ⚪ |
-| 本地引擎 | Local Engine | 本地引擎 | dashboard.connection.localEngine | ⚪ |
-| 客户端模式 | Client Mode | 客户端模式 | dashboard.connection.clientMode | ⚪ |
-| 停止并断开 | Stop & Disconnect | 停止并断开 | dashboard.connection.stopAndDisconnect | ⚪ |
-| 断开连接 | Disconnect | 断开连接 | common.buttons.disconnect | ⚪ |
+| 连接标题 | Connection | 连接 | dashboard.connection.title | ✅ |
+| 已连接 | Connected | 已连接 | common.status.connected | ✅ |
+| 未连接 | Not connected | 未连接 | common.status.notConnected | ✅ |
+| 本地引擎 | Local Engine | 本地引擎 | dashboard.connection.localEngine | ✅ |
+| 客户端模式 | Client Mode | 客户端模式 | dashboard.connection.clientMode | ✅ |
+| 停止并断开 | Stop & Disconnect | 停止并断开 | dashboard.connection.stopAndDisconnect | ✅ |
+| 断开连接 | Disconnect | 断开连接 | common.buttons.disconnect | ✅ |
 
 ### 首页内容
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 欢迎标题 | What should we do today? | 今天要做什么？ | dashboard.home.welcomeTitle | ⚪ |
-| 欢迎描述 | Describe an outcome. OpenWork will run it and keep an audit trail. | 描述您想要的结果，OpenWork 将执行并保留审计记录。 | dashboard.home.welcomeDescription | ⚪ |
-| 新任务按钮 | New Task | 新建任务 | dashboard.home.newTaskButton | ⚪ |
-| 快速模板标题 | Quick Start Templates | 快速启动模板 | dashboard.home.quickTemplates | ⚪ |
-| 查看全部 | View all | 查看全部 | common.actions.viewAll | ⚪ |
-| 无模板提示 | No templates yet. Starter templates will appear here. | 暂无模板。入门模板将显示在这里。 | dashboard.home.noTemplates | ⚪ |
-| 运行工作流 | Run a saved workflow | 运行已保存的工作流 | dashboard.home.runWorkflow | ⚪ |
+| 欢迎标题 | What should we do today? | 今天要做什么？ | dashboard.home.welcomeTitle | ✅ |
+| 欢迎描述 | Describe an outcome. OpenWork will run it and keep an audit trail. | 描述您想要的结果，OpenWork 将执行并保留审计记录。 | dashboard.home.welcomeDescription | ✅ |
+| 新任务按钮 | New Task | 新建任务 | dashboard.home.newTaskButton | ✅ |
+| 快速模板标题 | Quick Start Templates | 快速启动模板 | dashboard.home.quickTemplates | ✅ |
+| 查看全部 | View all | 查看全部 | common.actions.viewAll | ✅ |
+| 无模板提示 | No templates yet. Starter templates will appear here. | 暂无模板。入门模板将显示在这里。 | dashboard.home.noTemplates | ✅ |
+| 运行工作流 | Run a saved workflow | 运行已保存的工作流 | dashboard.home.runWorkflow | ✅ |
 
 ### 会话列表
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |
 |------|---------|---------|-----|------|
-| 最近会话 | Recent Sessions | 最近会话 | dashboard.sessions.recent | ⚪ |
-| 无会话 | No sessions yet. | 暂无会话。 | dashboard.sessions.empty | ⚪ |
-| 此工作空间 | this workspace | 此工作空间 | dashboard.sessions.thisWorkspace | ⚪ |
-| 状态-空闲 | idle | 空闲 | common.status.idle | ⚪ |
-| 状态-运行中 | running | 运行中 | common.status.running | ⚪ |
-| 状态-完成 | completed | 已完成 | common.status.completed | ⚪ |
+| 最近会话 | Recent Sessions | 最近会话 | dashboard.sessions.recent | ✅ |
+| 无会话 | No sessions yet. | 暂无会话。 | dashboard.sessions.empty | ✅ |
+| 此工作空间 | this workspace | 此工作空间 | dashboard.sessions.thisWorkspace | ✅ |
+| 状态-空闲 | idle | 空闲 | common.status.idle | ✅ |
+| 状态-运行中 | running | 运行中 | common.status.running | ✅ |
+| 状态-完成 | completed | 已完成 | common.status.completed | ✅ |
 
 ---
 

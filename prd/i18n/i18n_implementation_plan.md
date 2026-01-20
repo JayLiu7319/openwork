@@ -303,7 +303,7 @@ function App() {
 
 ### 阶段 2: 提取和翻译UI文本 (第3-7天)
 
-#### 步骤 2.1: 文本提取策略
+#### ✅ 步骤 2.1: 文本提取策略 - 已完成
 
 **提取优先级:**
 1. 🔴 高优先级 - 用户可见的静态文本
@@ -329,9 +329,19 @@ function App() {
 
 #### 步骤 2.2: 按模块提取和替换
 
-##### 2.2.1 OnboardingView 国际化
+##### ✅ 2.2.1 OnboardingView 国际化 - 已完成
 
 **文件:** [src/views/OnboardingView.tsx](file:///d:/projects/openwork/src/views/OnboardingView.tsx)
+
+**完成内容:**
+- ✅ 添加 `useI18n` hook 导入
+- ✅ 在组件中初始化 `const { t } = useI18n()`
+- ✅ 模式选择页面文本国际化
+- ✅ 工作空间创建页面文本国际化
+- ✅ 客户端连接页面文本国际化
+- ✅ 连接中状态页面文本国际化
+- ✅ 引擎状态相关文本国际化
+- ✅ 新增 `onboarding.engine` 翻译 key 组
 
 **提取文本清单:**
 ```typescript
@@ -363,25 +373,27 @@ onboarding: {
 import { useI18n } from '../i18n';
 
 export default function OnboardingView(props) {
-  const t = useI18n();
+  const { t } = useI18n();
   
   return (
-    <h2>{t('onboarding.mode.title')}</h2>
+    <h2>{t('onboarding.mode.subtitle')}</h2>
     // ...
   );
 }
 ```
 
-##### 2.2.2 DashboardView 国际化
+##### ✅ 2.2.2 DashboardView 国际化 - 已完成
 
 **文件:** [src/views/DashboardView.tsx](file:///d:/projects/openwork/src/views/DashboardView.tsx)
 
 **关键翻译点:**
-- 导航标签 (Sessions, Templates, Skills等)
-- "What should we do today?"
-- "New Task" 按钮
-- 连接状态显示
-- 快速启动模板区域
+- ✅ 导航标签 (Sessions, Templates, Skills等)
+- ✅ "What should we do today?"
+- ✅ "New Task" 按钮
+- ✅ 连接状态显示
+- ✅ 快速启动模板区域
+- ✅ 最近会话列表及时间格式化
+- ✅ 移动端导航菜单
 
 ##### 2.2.3 SettingsView 国际化
 
