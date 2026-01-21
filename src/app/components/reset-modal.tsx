@@ -4,6 +4,7 @@ import { X } from "lucide-solid";
 
 import Button from "./button";
 import TextInput from "./text-input";
+import { useI18n, type Locale } from "../../i18n";
 
 export type ResetModalProps = {
   open: boolean;
@@ -18,6 +19,8 @@ export type ResetModalProps = {
 };
 
 export default function ResetModal(props: ResetModalProps) {
+  const { t } = useI18n();
+
   return (
     <Show when={props.open}>
       <div class="fixed inset-0 z-50 bg-gray-1/60 backdrop-blur-sm flex items-center justify-center p-4">
@@ -27,13 +30,11 @@ export default function ResetModal(props: ResetModalProps) {
               <div>
                 <h3 class="text-lg font-semibold text-gray-12">
                   <Switch>
-                    <Match when={props.mode === "onboarding"}>Reset onboarding</Match>
-                    <Match when={true}>Reset app data</Match>
+                    <Match when={props.mode === "onboarding"}>{t("settings.advanced.resetOnboarding")}</Match>
+                    <Match when={true}>{t("settings.advanced.resetAppData")}</Match>
                   </Switch>
                 </h3>
-                <p class="text-sm text-gray-11 mt-1">
-                  Type <span class="font-mono">RESET</span> to confirm. OpenWork will restart.
-                </p>
+                <p class="text-sm text-gray-11 mt-1">{t("settings.advanced.resetConfirmHint")}</p>
               </div>
               <Button
                 variant="ghost"
@@ -49,19 +50,19 @@ export default function ResetModal(props: ResetModalProps) {
               <div class="rounded-xl bg-gray-1/20 border border-gray-6 p-3 text-xs text-gray-11">
                 <Switch>
                   <Match when={props.mode === "onboarding"}>
-                    Clears OpenWork local preferences and workspace onboarding markers.
+                    {t("settings.advanced.resetOnboardingDescription")}
                   </Match>
-                  <Match when={true}>Clears OpenWork cache and app data on this device.</Match>
+                  <Match when={true}>{t("settings.advanced.resetAppDataDescription")}</Match>
                 </Switch>
               </div>
 
               <Show when={props.hasActiveRuns}>
-                <div class="text-xs text-red-11">Stop active runs before resetting.</div>
+                <div class="text-xs text-red-11">{t("settings.advanced.stopRunsHint")}</div>
               </Show>
 
               <TextInput
-                label="Confirmation"
-                placeholder="Type RESET"
+                label={t("common.labels.name")}
+                placeholder="RESET"
                 value={props.text}
                 onInput={(e) => props.onTextChange(e.currentTarget.value)}
                 disabled={props.busy}
@@ -70,10 +71,10 @@ export default function ResetModal(props: ResetModalProps) {
 
             <div class="mt-6 flex justify-end gap-2">
               <Button variant="outline" onClick={props.onClose} disabled={props.busy}>
-                Cancel
+                {t("common.buttons.cancel")}
               </Button>
               <Button variant="danger" onClick={props.onConfirm} disabled={!props.canReset}>
-                Reset & Restart
+                {t("settings.advanced.resetButton")}
               </Button>
             </div>
           </div>

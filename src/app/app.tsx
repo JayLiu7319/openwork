@@ -94,7 +94,7 @@ import {
   readOpencodeConfig,
   writeOpencodeConfig,
 } from "./lib/tauri";
-import { I18nProvider } from "./i18n";
+import { I18nProvider } from "../i18n";
 
 export default function App() {
   const initialView: View = (() => {
@@ -318,6 +318,12 @@ export default function App() {
   // MCP OAuth modal state
   const [mcpAuthModalOpen, setMcpAuthModalOpen] = createSignal(false);
   const [mcpAuthEntry, setMcpAuthEntry] = createSignal<(typeof MCP_QUICK_CONNECT)[number] | null>(null);
+
+  // MCP Advanced settings state
+  const [advancedMcpName, setAdvancedMcpName] = createSignal("");
+  const [advancedMcpUrl, setAdvancedMcpUrl] = createSignal("");
+  const [advancedMcpOAuth, setAdvancedMcpOAuth] = createSignal(true);
+  const [advancedMcpEnabled, setAdvancedMcpEnabled] = createSignal(true);
 
   const advancedAuthCommand = createMemo(() => {
     const name = advancedMcpName().trim() || "my-mcp";

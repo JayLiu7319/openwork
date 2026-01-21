@@ -12,6 +12,7 @@ import {
   CircleAlert,
   Loader2,
   PlugZap,
+  Server,
   Settings,
   TriangleAlert,
   ChevronDown,
