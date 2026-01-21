@@ -452,30 +452,26 @@ export default function OnboardingView(props) {
 
 ---
 
-### 阶段 3: 实用功能增强 (第8-9天)
+### ✅ 阶段 3: 实用功能增强 (第8-9天) - 已完成
 
-#### 步骤 3.1: 语言切换UI
+#### ✅ 步骤 3.1: 语言切换UI - 已完成
 
 **在SettingsView添加语言选择:**
 
-```typescript
-// settings语言包
-settings: {
-  language: {
-    title: 'Language',
-    description: 'Choose your preferred language',
-    options: {
-      en: 'English',
-      zhCN: '简体中文'
-    }
-  }
-}
-```
+**文件:** [src/views/SettingsView.tsx](file:///d:/projects/openwork/src/views/SettingsView.tsx)
 
-**UI实现:**
-- 下拉选择框或切换按钮
-- 实时切换，无需重启
-- 保存用户选择到localStorage
+**实现内容:**
+- ✅ 在设置页面添加语言选择区块
+- ✅ 使用 `useI18n()` hook 获取 `locale` 和 `setLocale`
+- ✅ 提供英文和中文两个切换按钮
+- ✅ 当前语言使用 secondary 样式高亮显示
+- ✅ 实时切换，无需重启
+- ✅ 通过 localStorage 自动保存用户选择
+
+**翻译 keys 使用:**
+- `settings.language.title` - 标题
+- `settings.language.description` - 描述
+- `settings.language.switchLanguage` - 切换语言
 
 #### 步骤 3.2: 时间格式化国际化
 

@@ -144,7 +144,6 @@ export default function SessionView(props: SessionViewProps) {
   };
 
   const artifactActionLabel = () => (isWindowsPlatform() ? t('session.artifacts.open') : t('session.artifacts.reveal'));
-
   const artifactActionToast = () => (isWindowsPlatform() ? t('session.artifacts.opened') : t('session.artifacts.revealed'));
 
   const resolveArtifactPath = (artifact: ArtifactItem) => {
@@ -187,6 +186,23 @@ export default function SessionView(props: SessionViewProps) {
       setArtifactToast(error instanceof Error ? error.message : "Could not open artifact.");
     }
   };
+
+  const artifactsByMessage = createMemo(() => {
+    const map = new Map<string, ArtifactItem[]>();
+    for (const artifact of props.artifacts) {
+      const key = artifact.messageId?.trim();
+      if (!key) continue;
+      const current = map.get(key);
+      if (current) {
+        current.push(artifact);
+      } else {
+        map.set(key, [artifact]);
+      }
+    }
+    return map;
+  });
+
+  const unlinkedArtifacts = createMemo(() => props.artifacts.filter((artifact) => !artifact.messageId));
 
   const modelLabelParts = createMemo(() => {
     const label = props.selectedSessionModelLabel || t('session.model.label');
@@ -284,7 +300,6 @@ export default function SessionView(props: SessionViewProps) {
             <Show when={props.busyHint}>
               <span class="text-xs text-gray-10">· {props.busyHint}</span>
             </Show>
-
           </div>
         </header>
 
@@ -375,6 +390,8 @@ export default function SessionView(props: SessionViewProps) {
                   const groups = () =>
                     props.groupMessageParts(renderableParts(), String((msg.info as any).id ?? "message"));
                   const groupSpacing = () => (isUser() ? "mb-3" : "mb-4");
+                  const messageId = () => String((msg.info as any).id ?? "");
+                  const messageArtifacts = () => artifactsByMessage().get(messageId()) ?? [];
 
                   return (
                     <Show when={renderableParts().length > 0}>
@@ -453,6 +470,29 @@ export default function SessionView(props: SessionViewProps) {
                               </div>
                             )}
                           </For>
+                          <Show when={messageArtifacts().length}>
+                            <div class={`mt-4 space-y-2 ${isUser() ? "text-gray-12" : ""}`.trim()}>
+                              <div class="text-[11px] uppercase tracking-wide text-gray-9">Artifacts</div>
+                              <For each={messageArtifacts()}>
+                                {(artifact) => (
+                                  <div class="rounded-2xl border border-gray-6 bg-gray-1/60 px-4 py-3 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                      <div class="h-9 w-9 rounded-lg bg-gray-2 flex items-center justify-center">
+                                        <FileText size={16} class="text-gray-10" />
+                                      </div>
+                                      <div>
+                                        <div class="text-sm text-gray-12">{artifact.name}</div>
+                                        <div class="text-xs text-gray-10">{t('session.artifacts.document')}</div>
+                                      </div>
+                                    </div>
+                                    <Button variant="outline" class="text-xs" onClick={() => handleOpenArtifact(artifact)}>
+                                      {artifactActionLabel()}
+                                    </Button>
+                                  </div>
+                                )}
+                              </For>
+                            </div>
+                          </Show>
                         </div>
                       </div>
                     </Show>
@@ -466,25 +506,31 @@ export default function SessionView(props: SessionViewProps) {
                 </div>
               </Show>
 
-              <For each={props.artifacts}>
-                {(artifact) => (
-                  <div class="rounded-2xl border border-gray-6 bg-gray-1/60 p-4 flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                      <div class="h-10 w-10 rounded-xl bg-gray-2 flex items-center justify-center">
-                        <FileText size={18} class="text-gray-11" />
+              <Show when={unlinkedArtifacts().length}>
+                <div class="mt-6 space-y-2">
+                  <div class="text-[11px] uppercase tracking-wide text-gray-9">Artifacts</div>
+                  <For each={unlinkedArtifacts()}>
+                    {(artifact) => (
+                      <div class="rounded-2xl border border-gray-6 bg-gray-1/60 px-4 py-3 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                          <div class="h-9 w-9 rounded-lg bg-gray-2 flex items-center justify-center">
+                            <FileText size={16} class="text-gray-10" />
+                          </div>
+                          <div>
+                            <div class="text-sm text-gray-12">{artifact.name}</div>
+                            <div class="text-xs text-gray-10">{t('session.artifacts.document')}</div>
+                          </div>
+                        </div>
+                        <Button variant="outline" class="text-xs" onClick={() => handleOpenArtifact(artifact)}>
+                          {artifactActionLabel()}
+                        </Button>
                       </div>
-                      <div>
-                        <div class="text-sm text-gray-12">{artifact.name}</div>
-                        <div class="text-xs text-gray-10">{t('session.artifacts.document')}</div>
-                      </div>
-                    </div>
-                    <Button variant="outline" class="text-xs" onClick={() => handleOpenArtifact(artifact)}>
-                      {artifactActionLabel()}
-                    </Button>
-                  </div>
-                )}
-              </For>
+                    )}
+                  </For>
+                </div>
+              </Show>
 
+              <div ref={(el) => (messagesEndEl = el)} />
             </div>
           </div>
 
@@ -771,7 +817,7 @@ export default function SessionView(props: SessionViewProps) {
             </div>
           </div>
         </Show>
-      </div >
-    </Show >
+      </div>
+    </Show>
   );
 }

@@ -318,8 +318,8 @@ export default function DashboardView(props: DashboardViewProps) {
               <Server size={18} />,
             )}
             {navItem("settings", t('dashboard.nav.settings'), <Settings size={18} />)}
-          </nav >
-        </div >
+          </nav>
+        </div>
 
         <div class="space-y-4">
           <div class="px-3 py-3 rounded-xl bg-gray-2/50 border border-gray-6">
@@ -359,7 +359,7 @@ export default function DashboardView(props: DashboardViewProps) {
               disabled={props.busy}
               class="w-full"
             >
-              Connect
+              {t('common.buttons.connect')}
             </Button>
           </Show>
 
@@ -472,9 +472,9 @@ export default function DashboardView(props: DashboardViewProps) {
                       <Play size={18} />
                       {t('dashboard.home.newTaskButton')}
                     </Button>
-                  </div >
-                </div >
-              </section >
+                  </div>
+                </div>
+              </section>
 
               <section>
                 <div class="flex items-center justify-between mb-4">
@@ -513,10 +513,10 @@ export default function DashboardView(props: DashboardViewProps) {
                           </p>
                         </button>
                       )}
-                    </For >
-                  </div >
-                </Show >
-              </section >
+                    </For>
+                  </div>
+                </Show>
+              </section>
 
               <section>
                 <h3 class="text-sm font-medium text-gray-11 uppercase tracking-wider mb-4">
@@ -528,8 +528,8 @@ export default function DashboardView(props: DashboardViewProps) {
                     {(s, idx) => (
                       <button
                         class={`w-full p-4 flex items-center justify-between hover:bg-gray-4/50 transition-colors text-left ${idx() !== Math.min(props.sessions.length, 3) - 1
-                            ? "border-b border-gray-6/50"
-                            : ""
+                          ? "border-b border-gray-6/50"
+                          : ""
                           }`}
                         onPointerDown={(e) => {
                           e.currentTarget.setPointerCapture?.(e.pointerId);
@@ -560,28 +560,27 @@ export default function DashboardView(props: DashboardViewProps) {
                                   {t('dashboard.sessions.thisWorkspace')}
                                 </span>
                               </Show>
-                            </div >
-                          </div >
-                        </div >
+                            </div>
+                          </div>
+                        </div>
                         <div class="flex items-center gap-4">
                           <span class="text-xs px-2 py-0.5 rounded-full border border-gray-7/60 text-gray-11 flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-current" />
                             {t(`common.status.${props.sessionStatusById[s.id] ?? "idle"}` as any, undefined, props.sessionStatusById[s.id] ?? "idle")}
                           </span>
                         </div>
-                      </button >
-                    )
-                    }
-                  </For >
+                      </button>
+                    )}
+                  </For>
 
                   <Show when={!props.sessions.length}>
                     <div class="p-6 text-sm text-gray-10">
                       {t('dashboard.sessions.empty')}
                     </div>
                   </Show>
-                </div >
-              </section >
-            </Match >
+                </div>
+              </section>
+            </Match>
 
             <Match when={props.tab === "sessions"}>
               <section>
@@ -594,8 +593,8 @@ export default function DashboardView(props: DashboardViewProps) {
                     {(s, idx) => (
                       <button
                         class={`w-full p-4 flex items-center justify-between hover:bg-gray-4/50 transition-colors text-left ${idx() !== Math.min(props.sessions.length, 3) - 1
-                            ? "border-b border-gray-6/50"
-                            : ""
+                          ? "border-b border-gray-6/50"
+                          : ""
                           }`}
                         onPointerDown={(e) => {
                           e.currentTarget.setPointerCapture?.(e.pointerId);
@@ -626,27 +625,27 @@ export default function DashboardView(props: DashboardViewProps) {
                                   {t('dashboard.sessions.thisWorkspace')}
                                 </span>
                               </Show>
-                            </div >
-                          </div >
-                        </div >
+                            </div>
+                          </div>
+                        </div>
                         <div class="flex items-center gap-4">
                           <span class="text-xs px-2 py-0.5 rounded-full border border-gray-7/60 text-gray-11 flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-current" />
                             {t(`common.status.${props.sessionStatusById[s.id] ?? "idle"}` as any, undefined, props.sessionStatusById[s.id] ?? "idle")}
                           </span>
                         </div>
-                      </button >
+                      </button>
                     )}
-                  </For >
+                  </For>
 
                   <Show when={!props.sessions.length}>
                     <div class="p-6 text-sm text-gray-10">
                       {t('dashboard.sessions.empty')}
                     </div>
                   </Show>
-                </div >
-              </section >
-            </Match >
+                </div>
+              </section>
+            </Match>
 
             <Match when={props.tab === "templates"}>
               <TemplatesView
@@ -770,10 +769,9 @@ export default function DashboardView(props: DashboardViewProps) {
                 demoSequence={props.demoSequence}
                 setDemoSequence={props.setDemoSequence}
               />
-
-            </Match >
-          </Switch >
-        </div >
+            </Match>
+          </Switch>
+        </div>
 
         <Show when={props.error}>
           <div class="mx-auto max-w-5xl px-6 md:px-10 pb-24 md:pb-10">
@@ -868,7 +866,7 @@ export default function DashboardView(props: DashboardViewProps) {
             </button>
           </div>
         </nav>
-      </main >
-    </div >
+      </main>
+    </div>
   );
 }

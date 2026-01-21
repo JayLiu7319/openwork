@@ -121,7 +121,8 @@ export default function OnboardingView(props: OnboardingViewProps) {
                 {props.workspaces.length <= 1 ? t('onboarding.workspace.firstTitle') : t('onboarding.workspace.title')}
               </h2>
               <p class="text-gray-11 text-sm leading-relaxed">
-                A workspace is a <span class="font-semibold text-gray-12">folder</span> with its own skills, plugins, and templates.
+                {/* Manually using Upstream text for now if keys differ, or keys matching upstream. I'll use keys. */}
+                {t('onboarding.workspace.description')}
               </p>
             </div>
 
@@ -276,7 +277,7 @@ export default function OnboardingView(props: OnboardingViewProps) {
                       </div>
 
                       <Button variant="secondary" onClick={props.onRefreshEngineDoctor} disabled={props.busy}>
-                        {t('common.buttons.refresh')}
+                        {t('onboarding.engine.recheck')}
                       </Button>
                     </div>
 
@@ -284,8 +285,8 @@ export default function OnboardingView(props: OnboardingViewProps) {
                       <div class="mt-4 space-y-2">
                         <div class="text-xs text-gray-10">
                           {isWindowsPlatform()
-                            ? "Install OpenCode with one of the commands below, then restart OpenWork."
-                            : "Install OpenCode from https://opencode.ai/install"}
+                            ? t('onboarding.engine.installWindows')
+                            : t('onboarding.engine.installHint')}
                         </div>
                         <Show when={isWindowsPlatform()}>
                           <div class="text-xs text-gray-10 space-y-1 font-mono">

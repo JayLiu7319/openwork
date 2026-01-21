@@ -7,7 +7,7 @@
 | OnboardingView | ~40 | 🔴 高 | ✅ 已完成 | - |
 | DashboardView | ~80 | 🔴 高 | ✅ 已完成 | - |
 | SessionView | ~60 | 🔴 高 | ✅ 已完成 | - |
-| SettingsView | ~100 | 🔴 高 | ✅ 已完成 | - |
+| SettingsView | ~105 | 🔴 高 | ✅ 已完成 | - |
 | TemplatesView | ~30 | 🟡 中 | ✅ 已完成 | - |
 | SkillsView | ~40 | 🟡 中 | ✅ 已完成 | - |
 | PluginsView | ~35 | 🟡 中 | ✅ 已完成 | - |
@@ -319,6 +319,14 @@
 | 待处理权限 | Pending permissions | 待处理权限 | settings.developer.pendingPermissions | ✅ |
 | 最近事件 | Recent events | 最近事件 | settings.developer.recentEvents | ✅ |
 
+### 语言设置 （新增）
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 标题 | Language | 语言 | settings.language.title | ✅ |
+| 描述 | Choose your preferred language | 选择您偏好的语言 | settings.language.description | ✅ |
+| 切换语言 | Switch language | 切换语言 | settings.language.switchLanguage | ✅ |
+
 ---
 
 ## 📝 Templates & Skills & Plugins 翻译清单
@@ -368,15 +376,15 @@
 | 连接 | Connect | 连接 | settings.mcp.quickConnect.connect | ✅ |
 | 高级 | Advanced | 高级 | settings.mcp.toggle.advanced.title | ✅ |
 | 详细 | Details | 详细 | settings.mcp.details.title | ✅ |
-| 服务器名称 | Server Name | 服务器名称 | mcp.serverName | ⚪ |
-| 服务器URL | Server URL | 服务器 URL | mcp.serverUrl | ⚪ |
-| OAuth认证 | OAuth Authentication | OAuth 认证 | mcp.oauth | ⚪ |
-| 启用 | Enabled | 启用 | common.status.enabled | ⚪ |
-| 禁用 | Disabled | 禁用 | common.status.disabled | ⚪ |
-| 测试连接 | Test Connection | 测试连接 | mcp.testConnection | ⚪ |
-| 连接中 | Connecting... | 连接中... | mcp.connecting | ⚪ |
-| 需要重载 | Reload required | 需要重载 | mcp.reloadRequired | ⚪ |
-| 重载引擎 | Reload Engine | 重载引擎 | mcp.reloadEngine | ⚪ |
+| 服务器名称 | Server Name | 服务器名称 | settings.mcp.forms.serverName | ✅ |
+| 服务器URL | Server URL | 服务器 URL | settings.mcp.forms.serverUrl | ✅ |
+| OAuth认证 | OAuth Authentication | OAuth | settings.mcp.forms.oauth | ✅ |
+| 启用 | Enabled | 启用 | settings.mcp.forms.enabled | ✅ |
+| 禁用 | Disabled | 禁用 | settings.mcp.forms.disabled | ✅ |
+| 测试连接 | Test Connection | 验证连接 | settings.mcp.forms.verify | ✅ |
+| 连接中 | Connecting... | 连接中 | settings.mcp.quickConnect.connecting | ✅ |
+| 需要重载 | Reload required | 需要重新加载 | settings.mcp.reload.title | ✅ |
+| 重载引擎 | Reload Engine | 重新加载引擎 | settings.mcp.reload.button | ✅ |
 
 ---
 
@@ -403,6 +411,23 @@
 | 步骤2 | Choose Preset | 选择预设 | workspace.create.steps.choosePreset | ✅ |
 | 预设1 | Starter workspace | 入门工作空间 | workspace.create.presets.starter.name | ✅ |
 | 预设2 | Empty workspace | 空工作空间 | workspace.create.presets.minimal.name | ✅ |
+
+### McpAuthModal ✅ 已完成
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 标题 | Connect {serverName} | 连接 {serverName} | settings.mcp.authModal.connectTitle | ✅ |
+| 副标题 | We'll open your browser... | 我们将打开浏览器完成登录。 | settings.mcp.authModal.connectSubtitle | ✅ |
+| 已连接标题 | Already Connected | 已连接 | settings.mcp.authModal.alreadyConnected | ✅ |
+| 已连接描述 | {serverName} is already... | {serverName} 已认证并可以使用。 | settings.mcp.authModal.alreadyConnectedDesc | ✅ |
+| 步骤1标题 | Opening your browser | 正在打开浏览器 | settings.mcp.authModal.step1Title | ✅ |
+| 步骤2标题 | Authorize OpenWork | 授权 OpenWork | settings.mcp.authModal.step2Title | ✅ |
+| 步骤3标题 | Return here when you're done | 完成后返回这里 | settings.mcp.authModal.step3Title | ✅ |
+| 等待授权 | Waiting for authorization... | 等待浏览器中的授权完成... | settings.mcp.authModal.waitingAuth | ✅ |
+| 重载重试 | Reload engine and retry | 重新加载引擎并重试 | settings.mcp.authModal.reloadAndRetry | ✅ |
+| 立即重试 | Retry Now | 立即重试 | settings.mcp.authModal.retryNow | ✅ |
+| 完成 | Done | 完成 | settings.mcp.authModal.done | ✅ |
+| 我已完成 | I'm done | 我已完成 | settings.mcp.authModal.imDone | ✅ |
 
 ### Modal 组件
 

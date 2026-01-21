@@ -65,7 +65,7 @@ export type SettingsViewProps = {
 };
 
 export default function SettingsView(props: SettingsViewProps) {
-  const { t } = useI18n();
+  const { t, locale, setLocale } = useI18n();
   const updateState = () => props.updateStatus?.state ?? "idle";
   const updateNotes = () => props.updateStatus?.notes ?? null;
   const updateVersion = () => props.updateStatus?.version ?? null;
@@ -210,8 +210,8 @@ export default function SettingsView(props: SettingsViewProps) {
 
       <div class="bg-gray-2/30 border border-gray-6/50 rounded-2xl p-5 space-y-4">
         <div>
-          <div class="text-sm font-medium text-gray-12">Appearance</div>
-          <div class="text-xs text-gray-10">Match the system or force light/dark mode.</div>
+          <div class="text-sm font-medium text-gray-12">{t('settings.appearance.title')}</div>
+          <div class="text-xs text-gray-10">{t('settings.appearance.description')}</div>
         </div>
 
         <div class="flex flex-wrap gap-2">
@@ -221,7 +221,7 @@ export default function SettingsView(props: SettingsViewProps) {
             onClick={() => props.setThemeMode("system")}
             disabled={props.busy}
           >
-            System
+            {t('settings.appearance.system')}
           </Button>
           <Button
             variant={props.themeMode === "light" ? "secondary" : "outline"}
@@ -229,7 +229,7 @@ export default function SettingsView(props: SettingsViewProps) {
             onClick={() => props.setThemeMode("light")}
             disabled={props.busy}
           >
-            Light
+            {t('settings.appearance.light')}
           </Button>
           <Button
             variant={props.themeMode === "dark" ? "secondary" : "outline"}
@@ -237,19 +237,49 @@ export default function SettingsView(props: SettingsViewProps) {
             onClick={() => props.setThemeMode("dark")}
             disabled={props.busy}
           >
-            Dark
+            {t('settings.appearance.dark')}
           </Button>
         </div>
 
         <div class="text-xs text-gray-7">
-          System mode follows your OS preference automatically.
+          {t('settings.appearance.autoDescription')}
         </div>
       </div>
 
       <div class="bg-gray-2/30 border border-gray-6/50 rounded-2xl p-5 space-y-4">
         <div>
-          <div class="text-sm font-medium text-gray-12">Demo mode</div>
-          <div class="text-xs text-gray-10">Lightweight scripted states for recording and review.</div>
+          <div class="text-sm font-medium text-gray-12">{t('settings.language.title')}</div>
+          <div class="text-xs text-gray-10">{t('settings.language.description')}</div>
+        </div>
+
+        <div class="flex items-center justify-between bg-gray-1 p-3 rounded-xl border border-gray-6 gap-3">
+          <div class="min-w-0">
+            <div class="text-sm text-gray-12">{t('settings.language.switchLanguage')}</div>
+            <div class="text-xs text-gray-7 font-mono">{locale() === 'en' ? 'English' : '简体中文'}</div>
+          </div>
+          <div class="flex gap-2">
+            <Button
+              variant={locale() === 'en' ? 'secondary' : 'outline'}
+              class="text-xs h-8 py-0 px-3 shrink-0"
+              onClick={() => setLocale('en')}
+            >
+              English
+            </Button>
+            <Button
+              variant={locale() === 'zh-CN' ? 'secondary' : 'outline'}
+              class="text-xs h-8 py-0 px-3 shrink-0"
+              onClick={() => setLocale('zh-CN')}
+            >
+              简体中文
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-2/30 border border-gray-6/50 rounded-2xl p-5 space-y-4">
+        <div>
+          <div class="text-sm font-medium text-gray-12">{t('settings.demo.title')}</div>
+          <div class="text-xs text-gray-10">{t('settings.demo.description')}</div>
         </div>
 
         <div class="flex items-center justify-between bg-gray-1 p-3 rounded-xl border border-gray-6 gap-3">
@@ -543,6 +573,6 @@ export default function SettingsView(props: SettingsViewProps) {
           </div>
         </section>
       </Show>
-    </section >
+    </section>
   );
 }

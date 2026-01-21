@@ -469,6 +469,7 @@ export function deriveArtifacts(list: MessageWithParts[]): ArtifactItem[] {
   const filePattern = /([\w./\-]+\.(?:pdf|docx|doc|txt|md|csv|json|js|ts|tsx|xlsx|pptx|png|jpg|jpeg))/gi;
 
   list.forEach((message) => {
+    const messageId = String((message.info as any).id ?? "");
     message.parts.forEach((part) => {
       if (part.type !== "tool") return;
       const record = part as any;
@@ -491,7 +492,8 @@ export function deriveArtifacts(list: MessageWithParts[]): ArtifactItem[] {
 
       matches.forEach((match) => {
         const name = match.split("/").pop() ?? match;
-        const id = `artifact-${record.id ?? name}`;
+        const idBase = record.id ?? name;
+        const id = messageId ? `artifact-${messageId}-${idBase}` : `artifact-${idBase}`;
         if (seen.has(id)) return;
         seen.add(id);
 
@@ -501,6 +503,7 @@ export function deriveArtifacts(list: MessageWithParts[]): ArtifactItem[] {
           path: match,
           kind: "file",
           size: state.size ? String(state.size) : undefined,
+          messageId: messageId || undefined,
         });
       });
     });
@@ -510,5 +513,17 @@ export function deriveArtifacts(list: MessageWithParts[]): ArtifactItem[] {
 }
 
 export function deriveWorkingFiles(items: ArtifactItem[]): string[] {
-  return items.map((item) => item.name).slice(0, 5);
+  const results: string[] = [];
+  const seen = new Set<string>();
+
+  for (const item of items) {
+    const rawKey = item.path ?? item.name;
+    const normalized = rawKey.trim().replace(/[\\/]+/g, "/").toLowerCase();
+    if (!normalized || seen.has(normalized)) continue;
+    seen.add(normalized);
+    results.push(item.name);
+    if (results.length >= 5) break;
+  }
+
+  return results;
 }

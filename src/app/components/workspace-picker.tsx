@@ -1,7 +1,5 @@
 import { For, Show, createMemo } from "solid-js";
-
 import { Check, Plus, Search } from "lucide-solid";
-
 import { useI18n } from "../../i18n";
 import type { WorkspaceInfo } from "../lib/tauri";
 

@@ -1,7 +1,5 @@
 import { For, Show, createSignal } from "solid-js";
-
 import { CheckCircle2, FolderPlus, Loader2, X } from "lucide-solid";
-
 import Button from "./button";
 import { useI18n } from "../../i18n";
 
