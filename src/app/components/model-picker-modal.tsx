@@ -1,4 +1,4 @@
-import { For, Show } from "solid-js";
+import { For, Show, createEffect, createMemo, createSignal } from "solid-js";
 
 import { CheckCircle2, Circle, Search, X } from "lucide-solid";
 import { t } from "../../i18n";
@@ -20,7 +20,98 @@ export type ModelPickerModalProps = {
 };
 
 export default function ModelPickerModal(props: ModelPickerModalProps) {
-  const translate = (key: string) => t(key);
+  let searchInputRef: HTMLInputElement | undefined;
+  const translate = (key: string) => t(key, {}, key);
+
+  const [activeIndex, setActiveIndex] = createSignal(0);
+  const optionRefs: HTMLButtonElement[] = [];
+
+  const activeModelIndex = createMemo(() => {
+    const list = props.filteredOptions;
+    return list.findIndex((opt) =>
+      modelEquals(props.current, {
+        providerID: opt.providerID,
+        modelID: opt.modelID,
+      }),
+    );
+  });
+
+  const clampIndex = (next: number) => {
+    const last = props.filteredOptions.length - 1;
+    if (last < 0) return 0;
+    return Math.max(0, Math.min(next, last));
+  };
+
+  const scrollActiveIntoView = (idx: number) => {
+    const el = optionRefs[idx];
+    if (!el) return;
+    el.scrollIntoView({ block: "nearest" });
+  };
+
+  createEffect(() => {
+    if (!props.open) return;
+    requestAnimationFrame(() => {
+      searchInputRef?.focus();
+      if (searchInputRef?.value) {
+        searchInputRef.select();
+      }
+    });
+  });
+
+  createEffect(() => {
+    if (!props.open) return;
+    const idx = activeModelIndex();
+    const next = idx >= 0 ? idx : 0;
+    setActiveIndex(clampIndex(next));
+    requestAnimationFrame(() => scrollActiveIntoView(clampIndex(next)));
+  });
+
+  createEffect(() => {
+    if (!props.open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        props.onClose();
+        return;
+      }
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        event.stopPropagation();
+        setActiveIndex((current) => {
+          const next = clampIndex(current + 1);
+          requestAnimationFrame(() => scrollActiveIntoView(next));
+          return next;
+        });
+        return;
+      }
+
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        event.stopPropagation();
+        setActiveIndex((current) => {
+          const next = clampIndex(current - 1);
+          requestAnimationFrame(() => scrollActiveIntoView(next));
+          return next;
+        });
+        return;
+      }
+
+      if (event.key === "Enter") {
+        const idx = activeIndex();
+        const opt = props.filteredOptions[idx];
+        if (!opt) return;
+        event.preventDefault();
+        event.stopPropagation();
+        props.onSelect({ providerID: opt.providerID, modelID: opt.modelID });
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
+  });
 
   return (
     <Show when={props.open}>
@@ -45,6 +136,7 @@ export default function ModelPickerModal(props: ModelPickerModalProps) {
               <div class="relative">
                 <Search size={16} class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-10" />
                 <input
+                  ref={(el) => (searchInputRef = el)}
                   type="text"
                   value={props.query}
                   onInput={(e) => props.setQuery(e.currentTarget.value)}
@@ -61,19 +153,29 @@ export default function ModelPickerModal(props: ModelPickerModalProps) {
 
             <div class="mt-4 space-y-2 overflow-y-auto pr-1 -mr-1 min-h-0">
               <For each={props.filteredOptions}>
-                {(opt) => {
+                {(opt, idx) => {
                   const active = () =>
                     modelEquals(props.current, {
                       providerID: opt.providerID,
                       modelID: opt.modelID,
                     });
 
+                  const i = () => idx();
+
                   return (
                     <button
-                      class={`w-full text-left rounded-2xl border px-4 py-3 transition-colors ${active()
-                          ? "border-gray-6/20 bg-gray-12/5"
-                          : "border-gray-6/70 bg-gray-1/40 hover:bg-gray-1/60"
+                      ref={(el) => {
+                        optionRefs[i()] = el;
+                      }}
+                      class={`w-full text-left rounded-2xl border px-4 py-3 transition-colors ${i() === activeIndex()
+                          ? "border-gray-8 bg-gray-12/10"
+                          : active()
+                            ? "border-gray-6/20 bg-gray-12/5"
+                            : "border-gray-6/70 bg-gray-1/40 hover:bg-gray-1/60"
                         }`}
+                      onMouseEnter={() => {
+                        setActiveIndex(i());
+                      }}
                       onClick={() =>
                         props.onSelect({
                           providerID: opt.providerID,
