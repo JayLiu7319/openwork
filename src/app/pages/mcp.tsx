@@ -414,8 +414,8 @@ export default function McpView(props: McpViewProps) {
                         <button
                           type="button"
                           class={`text-left rounded-2xl border px-4 py-3 transition-all ${props.selectedMcp === entry.name
-                              ? "border-gray-8 bg-gray-2/70"
-                              : "border-gray-6/70 bg-gray-1/40 hover:border-gray-7"
+                            ? "border-gray-8 bg-gray-2/70"
+                            : "border-gray-6/70 bg-gray-1/40 hover:border-gray-7"
                             }`}
                           onClick={() => props.setSelectedMcp(entry.name)}
                         >
@@ -444,22 +444,6 @@ export default function McpView(props: McpViewProps) {
                 class="w-full flex items-center justify-between text-left"
                 onClick={() => setAdvancedOpen((prev) => !prev)}
               >
-                {/* Reverted to HEAD structure for inside content but container is Upstream style? 
-                     Upstream didn't have this block? 
-                     Conflict showed:
-                     HEAD: <div class="bg-zinc..."><button...
-                     Upstream: <div class="bg-gray..."><div class="flex items-start..."> (Edit MCP Config)
-                     
-                     It seems Upstream replaced Advanced section with "Edit MCP Config".
-                     HEAD has "Advanced Settings" form.
-                     I should probably keep BOTH or merge them.
-                     Upstream's "Edit MCP Config" allows toggling scope and revealing file.
-                     HEAD's "Advanced Settings" allows ADDING new MCPs manually.
-                     I think I should keep HEAD's "Advanced Settings" for adding MCPs, 
-                     AND Upstream's "Edit MCP Config" for managing config file.
-                     
-                     I'll add Upstream's "Edit MCP Config" block below HEAD's Advanced (or above).
-                 */}
                 <div>
                   <div class="text-sm font-medium text-gray-12">{t('settings.mcp.toggle.advanced.title')}</div>
                   <div class="text-xs text-gray-10">{t('settings.mcp.toggle.advanced.description')}</div>
@@ -561,8 +545,8 @@ export default function McpView(props: McpViewProps) {
               <div class="flex items-center gap-2">
                 <button
                   class={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${configScope() === "project"
-                      ? "bg-gray-12/10 text-gray-12 border-gray-6/30"
-                      : "text-gray-10 border-gray-6 hover:text-gray-12"
+                    ? "bg-gray-12/10 text-gray-12 border-gray-6/30"
+                    : "text-gray-10 border-gray-6 hover:text-gray-12"
                     }`}
                   onClick={() => setConfigScope("project")}
                 >
@@ -570,8 +554,8 @@ export default function McpView(props: McpViewProps) {
                 </button>
                 <button
                   class={`px-3 py-1 rounded-full text-xs font-medium border transition-colors ${configScope() === "global"
-                      ? "bg-gray-12/10 text-gray-12 border-gray-6/30"
-                      : "text-gray-10 border-gray-6 hover:text-gray-12"
+                    ? "bg-gray-12/10 text-gray-12 border-gray-6/30"
+                    : "text-gray-10 border-gray-6 hover:text-gray-12"
                     }`}
                   onClick={() => setConfigScope("global")}
                 >

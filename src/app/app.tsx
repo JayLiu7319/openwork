@@ -1733,249 +1733,159 @@ export default function App() {
   });
 
   return (
-<<<<<<< HEAD:src/App.tsx
     <I18nProvider>
       <>
-        <Show
-          when={client()}
-          fallback={<OnboardingView {...onboardingProps()} />}
-        >
-          <Switch>
-            <Match when={view() === "dashboard"}>
-              <DashboardView {...dashboardProps()} />
-            </Match>
-            <Match when={view() === "session"}>
-              <SessionView
-                selectedSessionId={activeSessionId()}
-                setView={setView}
-                setTab={setTab}
-                activeWorkspaceDisplay={activeWorkspaceDisplay()}
-                setWorkspaceSearch={workspaceStore.setWorkspaceSearch}
-                setWorkspacePickerOpen={workspaceStore.setWorkspacePickerOpen}
-                headerStatus={headerStatus()}
-                busyHint={busyHint()}
-                selectedSessionModelLabel={selectedSessionModelLabel()}
-                openSessionModelPicker={openSessionModelPicker}
-                activePlugins={sidebarPluginList()}
-                activePluginStatus={sidebarPluginStatus()}
-                createSessionAndOpen={createSessionAndOpen}
-                sendPromptAsync={sendPrompt}
-                newTaskDisabled={newTaskDisabled()}
-                sessions={activeSessions().map((session) => ({
-                  id: session.id,
-                  title: session.title,
-                  slug: session.slug,
-                }))}
-                selectSession={isDemoMode() ? selectDemoSession : selectSession}
-                messages={activeMessages()}
-                todos={activeTodos()}
-                busyLabel={busyLabel()}
-                developerMode={developerMode()}
-                showThinking={showThinking()}
-                groupMessageParts={groupMessageParts}
-                summarizeStep={summarizeStep}
-                expandedStepIds={expandedStepIds()}
-                setExpandedStepIds={setExpandedStepIds}
-                expandedSidebarSections={expandedSidebarSections()}
-                setExpandedSidebarSections={setExpandedSidebarSections}
-                artifacts={activeArtifacts()}
-                workingFiles={activeWorkingFiles()}
-                authorizedDirs={activeAuthorizedDirs()}
-                busy={busy()}
-                prompt={prompt()}
-                setPrompt={setPrompt}
-                sendPrompt={sendPrompt}
-                activePermission={activePermissionMemo()}
-                permissionReplyBusy={permissionReplyBusy()}
-                respondPermission={respondPermission}
-                respondPermissionAndRemember={respondPermissionAndRemember}
-                safeStringify={safeStringify}
-                showTryNotionPrompt={tryNotionPromptVisible() && notionIsActive()}
-                onTryNotionPrompt={() => {
-                  setPrompt("setup my crm");
-                  setTryNotionPromptVisible(false);
-                  setNotionSkillInstalled(true);
-                  try {
-                    window.localStorage.setItem("openwork.notionSkillInstalled", "1");
-                  } catch {
-                    // ignore
-                  }
-                }}
-                sessionStatus={selectedSessionStatus()}
-                error={error()}
-              />
-            </Match>
-            <Match when={true}>
-              <DashboardView {...dashboardProps()} />
-            </Match>
-          </Switch>
-        </Show>
-=======
-    <>
-          <Switch>
-            <Match when={view() === "onboarding"}>
-              <OnboardingView {...onboardingProps()} />
-            </Match>
-            <Match when={view() === "session"}>
-              <SessionView
-                selectedSessionId={activeSessionId()}
-                setView={setView}
-                setTab={setTab}
-                activeWorkspaceDisplay={activeWorkspaceDisplay()}
-                setWorkspaceSearch={workspaceStore.setWorkspaceSearch}
-                setWorkspacePickerOpen={workspaceStore.setWorkspacePickerOpen}
-                headerStatus={headerStatus()}
-                busyHint={busyHint()}
-                selectedSessionModelLabel={selectedSessionModelLabel()}
-                openSessionModelPicker={openSessionModelPicker}
-                activePlugins={sidebarPluginList()}
-                activePluginStatus={sidebarPluginStatus()}
-                createSessionAndOpen={createSessionAndOpen}
-                sendPromptAsync={sendPrompt}
-                newTaskDisabled={newTaskDisabled()}
-                sessions={activeSessions().map((session) => ({
-                  id: session.id,
-                  title: session.title,
-                  slug: session.slug,
-                }))}
-                selectSession={isDemoMode() ? selectDemoSession : selectSession}
-                messages={activeMessages()}
-                todos={activeTodos()}
-                busyLabel={busyLabel()}
-                developerMode={developerMode()}
-                showThinking={showThinking()}
-                groupMessageParts={groupMessageParts}
-                summarizeStep={summarizeStep}
-                expandedStepIds={expandedStepIds()}
-                setExpandedStepIds={setExpandedStepIds}
-                expandedSidebarSections={expandedSidebarSections()}
-                setExpandedSidebarSections={setExpandedSidebarSections}
-                artifacts={activeArtifacts()}
-                workingFiles={activeWorkingFiles()}
-                authorizedDirs={activeAuthorizedDirs()}
-                busy={busy()}
-                prompt={prompt()}
-                setPrompt={setPrompt}
-                sendPrompt={sendPrompt}
-                activePermission={activePermissionMemo()}
-                permissionReplyBusy={permissionReplyBusy()}
-                respondPermission={respondPermission}
-                respondPermissionAndRemember={respondPermissionAndRemember}
-                safeStringify={safeStringify}
-                showTryNotionPrompt={tryNotionPromptVisible() && notionIsActive()}
-                onTryNotionPrompt={() => {
-                  setPrompt("setup my crm");
-                  setTryNotionPromptVisible(false);
-                  setNotionSkillInstalled(true);
-                  try {
-                    window.localStorage.setItem("openwork.notionSkillInstalled", "1");
-                  } catch {
-                    // ignore
-                  }
-                }}
-                sessionStatus={selectedSessionStatus()}
-                error={error()}
-              />
-            </Match>
-            <Match when={true}>
-              <DashboardView {...dashboardProps()} />
-            </Match>
-          </Switch>
->>>>>>> upstream/dev:src/app/app.tsx
+        <Switch>
+          <Match when={view() === "onboarding"}>
+            <OnboardingView {...onboardingProps()} />
+          </Match>
+          <Match when={view() === "session"}>
+            <SessionView
+              selectedSessionId={activeSessionId()}
+              setView={setView}
+              setTab={setTab}
+              activeWorkspaceDisplay={activeWorkspaceDisplay()}
+              setWorkspaceSearch={workspaceStore.setWorkspaceSearch}
+              setWorkspacePickerOpen={workspaceStore.setWorkspacePickerOpen}
+              headerStatus={headerStatus()}
+              busyHint={busyHint()}
+              selectedSessionModelLabel={selectedSessionModelLabel()}
+              openSessionModelPicker={openSessionModelPicker}
+              activePlugins={sidebarPluginList()}
+              activePluginStatus={sidebarPluginStatus()}
+              createSessionAndOpen={createSessionAndOpen}
+              sendPromptAsync={sendPrompt}
+              newTaskDisabled={newTaskDisabled()}
+              sessions={activeSessions().map((session) => ({
+                id: session.id,
+                title: session.title,
+                slug: session.slug,
+              }))}
+              selectSession={isDemoMode() ? selectDemoSession : selectSession}
+              messages={activeMessages()}
+              todos={activeTodos()}
+              busyLabel={busyLabel()}
+              developerMode={developerMode()}
+              showThinking={showThinking()}
+              groupMessageParts={groupMessageParts}
+              summarizeStep={summarizeStep}
+              expandedStepIds={expandedStepIds()}
+              setExpandedStepIds={setExpandedStepIds}
+              expandedSidebarSections={expandedSidebarSections()}
+              setExpandedSidebarSections={setExpandedSidebarSections}
+              artifacts={activeArtifacts()}
+              workingFiles={activeWorkingFiles()}
+              authorizedDirs={activeAuthorizedDirs()}
+              busy={busy()}
+              prompt={prompt()}
+              setPrompt={setPrompt}
+              sendPrompt={sendPrompt}
+              activePermission={activePermissionMemo()}
+              permissionReplyBusy={permissionReplyBusy()}
+              respondPermission={respondPermission}
+              respondPermissionAndRemember={respondPermissionAndRemember}
+              safeStringify={safeStringify}
+              showTryNotionPrompt={tryNotionPromptVisible() && notionIsActive()}
+              onTryNotionPrompt={() => {
+                setPrompt("setup my crm");
+                setTryNotionPromptVisible(false);
+                setNotionSkillInstalled(true);
+                try {
+                  window.localStorage.setItem("openwork.notionSkillInstalled", "1");
+                } catch {
+                  // ignore
+                }
+              }}
+              sessionStatus={selectedSessionStatus()}
+              error={error()}
+            />
+          </Match>
+          <Match when={true}>
+            <DashboardView {...dashboardProps()} />
+          </Match>
+        </Switch>
 
-          <ModelPickerModal
-            open={modelPickerOpen()}
-            options={modelOptions()}
-            filteredOptions={filteredModelOptions()}
-            query={modelPickerQuery()}
-            setQuery={setModelPickerQuery}
-            target={modelPickerTarget()}
-            current={modelPickerCurrent()}
-            onSelect={applyModelSelection}
-            onClose={() => setModelPickerOpen(false)}
-          />
+        <ModelPickerModal
+          open={modelPickerOpen()}
+          options={modelOptions()}
+          filteredOptions={filteredModelOptions()}
+          query={modelPickerQuery()}
+          setQuery={setModelPickerQuery}
+          target={modelPickerTarget()}
+          current={modelPickerCurrent()}
+          onSelect={applyModelSelection}
+          onClose={() => setModelPickerOpen(false)}
+        />
 
-          <ResetModal
-            open={resetModalOpen()}
-            mode={resetModalMode()}
-            text={resetModalText()}
-            busy={resetModalBusy()}
-            canReset={
-              !resetModalBusy() &&
-              !anyActiveRuns() &&
-              resetModalText().trim().toUpperCase() === "RESET"
-            }
-            hasActiveRuns={anyActiveRuns()}
-            onClose={() => setResetModalOpen(false)}
-            onConfirm={confirmReset}
-            onTextChange={setResetModalText}
-          />
+        <ResetModal
+          open={resetModalOpen()}
+          mode={resetModalMode()}
+          text={resetModalText()}
+          busy={resetModalBusy()}
+          canReset={
+            !resetModalBusy() &&
+            !anyActiveRuns() &&
+            resetModalText().trim().toUpperCase() === "RESET"
+          }
+          hasActiveRuns={anyActiveRuns()}
+          onClose={() => setResetModalOpen(false)}
+          onConfirm={confirmReset}
+          onTextChange={setResetModalText}
+        />
 
-          <McpAuthModal
-            open={mcpAuthModalOpen()}
-            client={client()}
-            entry={mcpAuthEntry()}
-            projectDir={workspaceProjectDir()}
-            onClose={() => {
-              setMcpAuthModalOpen(false);
-              setMcpAuthEntry(null);
-            }}
-            onComplete={() => {
-              setMcpAuthModalOpen(false);
-              setMcpAuthEntry(null);
-              markReloadRequired("mcp");
-              setMcpStatus("OAuth completed. Reload the engine to activate the MCP.");
-            }}
-            onReloadEngine={() => reloadEngineInstance()}
-          />
+        <McpAuthModal
+          open={mcpAuthModalOpen()}
+          client={client()}
+          entry={mcpAuthEntry()}
+          projectDir={workspaceProjectDir()}
+          onClose={() => {
+            setMcpAuthModalOpen(false);
+            setMcpAuthEntry(null);
+          }}
+          onComplete={() => {
+            setMcpAuthModalOpen(false);
+            setMcpAuthEntry(null);
+            markReloadRequired("mcp");
+            setMcpStatus("OAuth completed. Reload the engine to activate the MCP.");
+          }}
+          onReloadEngine={() => reloadEngineInstance()}
+        />
 
-          <TemplateModal
-            open={templateModalOpen()}
-            title={templateDraftTitle()}
-            description={templateDraftDescription()}
-            prompt={templateDraftPrompt()}
-            scope={templateDraftScope()}
-            onClose={() => setTemplateModalOpen(false)}
-            onSave={saveTemplate}
-            onTitleChange={setTemplateDraftTitle}
-            onDescriptionChange={setTemplateDraftDescription}
-            onPromptChange={setTemplateDraftPrompt}
-            onScopeChange={setTemplateDraftScope}
-          />
+        <TemplateModal
+          open={templateModalOpen()}
+          title={templateDraftTitle()}
+          description={templateDraftDescription()}
+          prompt={templateDraftPrompt()}
+          scope={templateDraftScope()}
+          onClose={() => setTemplateModalOpen(false)}
+          onSave={saveTemplate}
+          onTitleChange={setTemplateDraftTitle}
+          onDescriptionChange={setTemplateDraftDescription}
+          onPromptChange={setTemplateDraftPrompt}
+          onScopeChange={setTemplateDraftScope}
+        />
 
-          <WorkspacePicker
-            open={workspaceStore.workspacePickerOpen()}
-            workspaces={workspaceStore.filteredWorkspaces()}
-            activeWorkspaceId={workspaceStore.activeWorkspaceId()}
-            search={workspaceStore.workspaceSearch()}
-            onSearch={workspaceStore.setWorkspaceSearch}
-            onClose={() => workspaceStore.setWorkspacePickerOpen(false)}
-            onSelect={workspaceStore.activateWorkspace}
-            onCreateNew={() => workspaceStore.setCreateWorkspaceOpen(true)}
-          />
+        <WorkspacePicker
+          open={workspaceStore.workspacePickerOpen()}
+          workspaces={workspaceStore.filteredWorkspaces()}
+          activeWorkspaceId={workspaceStore.activeWorkspaceId()}
+          search={workspaceStore.workspaceSearch()}
+          onSearch={workspaceStore.setWorkspaceSearch}
+          onClose={() => workspaceStore.setWorkspacePickerOpen(false)}
+          onSelect={workspaceStore.activateWorkspace}
+          onCreateNew={() => workspaceStore.setCreateWorkspaceOpen(true)}
+        />
 
-<<<<<<< HEAD:src/App.tsx
-  <CreateWorkspaceModal
-    open={workspaceStore.createWorkspaceOpen()}
-    onClose={() => workspaceStore.setCreateWorkspaceOpen(false)}
-    onPickFolder={workspaceStore.pickWorkspaceFolder}
-    onConfirm={(preset, folder) =>
-      workspaceStore.createWorkspaceFlow(preset, folder)
-    }
-  />
+        <CreateWorkspaceModal
+          open={workspaceStore.createWorkspaceOpen()}
+          onClose={() => workspaceStore.setCreateWorkspaceOpen(false)}
+          onPickFolder={workspaceStore.pickWorkspaceFolder}
+          onConfirm={(preset, folder) =>
+            workspaceStore.createWorkspaceFlow(preset, folder)
+          }
+          submitting={busy() && busyLabel() === "Creating workspace"}
+        />
       </>
-    </I18nProvider >
-=======
-      <CreateWorkspaceModal
-        open={workspaceStore.createWorkspaceOpen()}
-        onClose={() => workspaceStore.setCreateWorkspaceOpen(false)}
-        onPickFolder={workspaceStore.pickWorkspaceFolder}
-        onConfirm={(preset, folder) =>
-          workspaceStore.createWorkspaceFlow(preset, folder)
-        }
-        submitting={busy() && busyLabel() === "Creating workspace"}
-      />
-    </>
->>>>>>> upstream/dev:src/app/app.tsx
+    </I18nProvider>
   );
 }
