@@ -329,7 +329,6 @@ export default function App() {
     const name = advancedMcpName().trim() || "my-mcp";
     return `opencode mcp auth ${name}`;
   });
-
   let markReloadRequiredRef: (reason: ReloadReason) => void = () => { };
 
   const extensionsStore = createExtensionsStore({
