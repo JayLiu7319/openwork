@@ -7,7 +7,7 @@
 | OnboardingView | ~40 | 🔴 高 | ✅ 已完成 | - |
 | DashboardView | ~80 | 🔴 高 | ✅ 已完成 | - |
 | SessionView | ~60 | 🔴 高 | ✅ 已完成 | - |
-| SettingsView | ~100 | 🔴 高 | ✅ 已完成 | - |
+| SettingsView | ~105 | 🔴 高 | ✅ 已完成 | - |
 | TemplatesView | ~30 | 🟡 中 | ✅ 已完成 | - |
 | SkillsView | ~40 | 🟡 中 | ✅ 已完成 | - |
 | PluginsView | ~35 | 🟡 中 | ✅ 已完成 | - |
@@ -318,6 +318,14 @@
 | 需要桌面版 | Cache repair requires the desktop app | 缓存修复需要桌面应用 | settings.developer.requiresDesktop | ✅ |
 | 待处理权限 | Pending permissions | 待处理权限 | settings.developer.pendingPermissions | ✅ |
 | 最近事件 | Recent events | 最近事件 | settings.developer.recentEvents | ✅ |
+
+### 语言设置 （新增）
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 标题 | Language | 语言 | settings.language.title | ✅ |
+| 描述 | Choose your preferred language | 选择您偏好的语言 | settings.language.description | ✅ |
+| 切换语言 | Switch language | 切换语言 | settings.language.switchLanguage | ✅ |
 
 ---
 

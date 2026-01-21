@@ -63,7 +63,7 @@ export type SettingsViewProps = {
 };
 
 export default function SettingsView(props: SettingsViewProps) {
-  const { t } = useI18n();
+  const { t, locale, setLocale } = useI18n();
   const updateState = () => props.updateStatus?.state ?? "idle";
   const updateNotes = () => props.updateStatus?.notes ?? null;
   const updateVersion = () => props.updateStatus?.version ?? null;
@@ -264,6 +264,36 @@ export default function SettingsView(props: SettingsViewProps) {
 
         <div class="text-xs text-zinc-600">
           {t('settings.demo.sequenceDescription')}
+        </div>
+      </div>
+
+      <div class="bg-zinc-900/30 border border-zinc-800/50 rounded-2xl p-5 space-y-4">
+        <div>
+          <div class="text-sm font-medium text-white">{t('settings.language.title')}</div>
+          <div class="text-xs text-zinc-500">{t('settings.language.description')}</div>
+        </div>
+
+        <div class="flex items-center justify-between bg-zinc-950 p-3 rounded-xl border border-zinc-800 gap-3">
+          <div class="min-w-0">
+            <div class="text-sm text-zinc-200">{t('settings.language.switchLanguage')}</div>
+            <div class="text-xs text-zinc-600 font-mono">{locale() === 'en' ? 'English' : '简体中文'}</div>
+          </div>
+          <div class="flex gap-2">
+            <Button
+              variant={locale() === 'en' ? 'secondary' : 'outline'}
+              class="text-xs h-8 py-0 px-3 shrink-0"
+              onClick={() => setLocale('en')}
+            >
+              English
+            </Button>
+            <Button
+              variant={locale() === 'zh-CN' ? 'secondary' : 'outline'}
+              class="text-xs h-8 py-0 px-3 shrink-0"
+              onClick={() => setLocale('zh-CN')}
+            >
+              简体中文
+            </Button>
+          </div>
         </div>
       </div>
 
