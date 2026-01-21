@@ -250,6 +250,17 @@
 | 模型变体 | Model variant | 模型变体 | settings.model.variant | ✅ |
 | 编辑 | Edit | 编辑 | common.buttons.edit | ✅ |
 
+### 外观设置
+
+| 位置 | 英文原文 | 中文翻译 | Key | 状态 |
+|------|---------|---------|-----|------|
+| 外观 | Appearance | 外观 | settings.appearance.title | ✅ |
+| 描述 | Customize the look... | 自定义应用程序的外观和感觉。 | settings.appearance.description | ✅ |
+| 跟随系统 | System | 跟随系统 | settings.appearance.system | ✅ |
+| 亮色 | Light | 亮色 | settings.appearance.light | ✅ |
+| 暗色 | Dark | 暗色 | settings.appearance.dark | ✅ |
+| 自动说明 | System mode automatically... | 跟随系统模式会自动调整... | settings.appearance.autoDescription | ✅ |
+
 ### 演示模式
 
 | 位置 | 英文原文 | 中文翻译 | Key | 状态 |

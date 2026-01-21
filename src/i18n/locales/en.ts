@@ -384,6 +384,14 @@ const translations = {
             thinkingDescription: 'Show thinking parts (Developer mode only).',
             variant: 'Model variant',
         },
+        appearance: {
+            title: 'Appearance',
+            description: 'Customize the look and feel of the application.',
+            system: 'System',
+            light: 'Light',
+            dark: 'Dark',
+            autoDescription: 'System mode automatically adjusts to match your device settings.',
+        },
         demo: {
             title: 'Demo mode',
             description: 'Lightweight scripted states for recording and review.',

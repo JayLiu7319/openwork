@@ -386,6 +386,14 @@ const zhCN: Translations = {
             thinkingDescription: '显示思考部分（仅开发者模式）。',
             variant: '模型变体',
         },
+        appearance: {
+            title: '外观',
+            description: '自定义应用程序的外观和感觉。',
+            system: '跟随系统',
+            light: '亮色',
+            dark: '暗色',
+            autoDescription: '跟随系统模式会自动调整以匹配您的设备设置。',
+        },
         demo: {
             title: '演示模式',
             description: '用于录制和审查的轻量级脚本状态。',
